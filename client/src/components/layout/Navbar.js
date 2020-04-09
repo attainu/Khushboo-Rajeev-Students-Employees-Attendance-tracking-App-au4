@@ -68,7 +68,7 @@ class Navbar extends Component {
       <nav className='navbar navbar-expand-sm mb-4'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            Attendance app
+            EasyAttend
           </Link>
           <button
             className='navbar-toggler'

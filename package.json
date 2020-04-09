@@ -1,7 +1,7 @@
 {
-  "name": "devconnector",
+  "name": "employeesattendanceapp",
   "version": "1.0.0",
-  "description": "Social network for developers",
+  "description": "Attendance App for Employees",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -10,8 +10,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Brad Traversy",
-  "license": "MIT",
+  "author": "Khushboo Goyal, Rajeev Ranjan",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",

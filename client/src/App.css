@@ -75,7 +75,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
-/* Home CSS */
+/************************************ Home CSS *****************************************/
 .userdetail {
   height: 300px;
   border: 1px solid black;
@@ -108,7 +108,7 @@ p{
   right: 46%;
 }
 
-/* Report Page */
+/***************************************** Report Page ****************************************/
 .reporttable{
   width: 50%;
   float: left;
@@ -117,7 +117,7 @@ p{
   float: right;
 }
 
-/* LeaderBoard Page */
+/****************************************** LeaderBoard Page ***********************************/
 .leaderboardtable{
   width: 50%;
   float:right;
@@ -127,7 +127,7 @@ p{
   float:left;
 }
 
-/* Admin Page */
+/******************************************** Admin Page **************************************/
 .admintable{
   width: 50%;
   float:right;

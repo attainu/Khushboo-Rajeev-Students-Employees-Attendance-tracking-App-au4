@@ -15,6 +15,9 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Home from "./components/home/Home";
+import Report from "./components/report/Report";
+import LeaderBoard from "./components/leaderboard/LeaderBoard";
+import Admin from "./components/admin/Admin";
 
 import "./App.css";
 
@@ -53,6 +56,15 @@ class App extends Component {
               {/* protected routes goes here */}
               <Switch>
                 <PrivateRoute exact path='/home' component={Home} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/report' component={Report} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/leaderboards' component={LeaderBoard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/admin' component={Admin} />
               </Switch>
             </div>
             <Footer />

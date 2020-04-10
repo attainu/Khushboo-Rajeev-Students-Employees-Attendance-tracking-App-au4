@@ -3,6 +3,15 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
+/******************For Sequelize **************************/
+const http = require("http");
+const app1 = require("./app1");
+let server = http.createServer(app1);
+server.listen(8080, function () {
+  console.log("connection is ready");
+});
+/******************************************************/
+
 const users = require("./routes/api/users");
 // const profile = require("./routes/api/profile");
 // const posts = require('./routes/api/posts');

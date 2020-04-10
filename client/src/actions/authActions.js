@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, GET_USER_DETAILS } from './types';
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -58,3 +58,22 @@ export const logoutUser = () => dispatch => {
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+
+// User Details
+export const getUserDetails = () => dispatch => {
+  console.log("started");
+  axios
+    .get("http://localhost:8080/home")
+    .then(res => {
+      console.log("response", res);
+      dispatch({
+        type: GET_USER_DETAILS,
+        payload: res.data
+      })
+    }
+    )
+    .catch(err =>
+      console.log("eroor", err)
+    );
+}; 

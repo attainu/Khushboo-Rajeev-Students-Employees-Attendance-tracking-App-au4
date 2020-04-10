@@ -21,7 +21,7 @@ import Admin from "./components/admin/Admin";
 
 import "./App.css";
 
-// Check for token
+// Check for token  
 if (localStorage.jwtToken) {
   // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
@@ -66,6 +66,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute exact path='/admin' component={Admin} />
               </Switch>
+
             </div>
             <Footer />
           </div>

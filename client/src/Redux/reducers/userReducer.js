@@ -1,18 +1,19 @@
-import { GET_USER_DETAILS } from "../../actions/types";
+import { FETCH_USER } from "../../actions/types";
 
 const initialState = {
-    userdetails: []
+    user: [],
+
 };
 
 export default function (state = initialState, action) {
+    console.log("state", state);
     switch (action.type) {
-        case GET_USER_DETAILS:
-            console.log("reducers", action.payload)
+        case FETCH_USER:
             return {
-
                 ...state,
-                userdetails: action.payload
+                user: action.payload,
             };
+
         default:
             return state;
     }

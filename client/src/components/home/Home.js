@@ -1,45 +1,17 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import { GET_USER_DETAILS } from "../../actions/types";
-//import PropTypes from "prop-types"; */
+//import axios from 'axios';
+import { fetchUser } from "../../actions/userdetailAction";
+import PropTypes from "prop-types";
 //import { getUserDetails } from "../../actions/authActions";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 
 class Home extends Component {
 
-  state = {
-    userdetails: []
-  };
-
-
-  componentWillMount = () => {
-    this.getUserDetails();
+  componentWillMount() {
+    this.props.fetchUser();
   }
-
-  getUserDetails = () => {
-    console.log("started");
-    axios
-      .get("http://localhost:8080/home")
-      .then(res => {
-        //res.data
-        console.log("res", res.data);
-        this.props.dispatch({
-          type: GET_USER_DETAILS,
-          payload: res.data
-        })
-        /* this.setState({
-          ...this.state,
-          userdetails: res.data
-        }) */
-      }
-      )
-      .catch(err =>
-        console.log("eroor", err)
-      );
-  };
-
 
 
 
@@ -49,16 +21,16 @@ class Home extends Component {
       <div className="container-fluid mt-5">
         <div className="container userdetail ">
           {/*           {this.props.UserDetails.map((userdetails) => { */}
-          {this.props.userdetails.map((userdetails) => {
-            return (
-              <div>
-                <p className="mt-5"> Hi, {userdetails.user_name}</p>
-                <p> Joining Date: {userdetails.joining_date} </p>
-                <p> Registered Email ID:  {userdetails.registered_emailid}</p>
-                <p>Registered Mo. No. {userdetails.registered_contactno} </p>
-                <p> Department:  {userdetails.department}</p>
-              </div>
-            )
+
+          {this.props.user.map((user) => {
+            <div>
+              <p className="mt-5"> Hi, {user.user_name}</p>
+              <p> Joining Date: {user.joining_date} </p>
+              <p> Registered Email ID:  {user.registered_emailid}</p>
+              <p>Registered Mo. No. {user.registered_contactno} </p>
+              <p> Department:  {user.department}</p>
+            </div>
+
           })}
 
 
@@ -82,12 +54,12 @@ class Home extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  console.log("state udetails", state.udetails);
-
-  return state.udetails
-
+Home.propTypes = {
+  user: PropTypes.array.isRequired,
 };
 
-export default connect(mapStateToProps)(withRouter(Home));
-//export default Home;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps, { fetchUser })(Home);

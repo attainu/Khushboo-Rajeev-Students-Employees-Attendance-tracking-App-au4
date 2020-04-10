@@ -61,7 +61,7 @@ export const logoutUser = () => dispatch => {
 
 
 // User Details
-export const getUserDetails = () => dispatch => {
+/* export const getUserDetails = () => dispatch => {
   console.log("started");
   axios
     .get("http://localhost:8080/home")
@@ -74,6 +74,11 @@ export const getUserDetails = () => dispatch => {
     }
     )
     .catch(err =>
-      console.log("eroor", err)
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+
     );
-}; 
+};
+ */

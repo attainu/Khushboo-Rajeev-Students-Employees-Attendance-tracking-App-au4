@@ -1,43 +1,39 @@
-const db = require("../database");
-const Sequelize = require("sequelize");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-let Userdetails = db.define(
-  "userdetails",
+const Userdetails = new Schema(
   {
     user_name: {
-      type: Sequelize.CHAR,
+      type: String,
       allowNull: false,
       required: true,
     },
     joining_date: {
-      type: Sequelize.STRING,
+      type: String,
       allowNull: false,
       required: true,
     },
-    registered_emailid: {
-      type: Sequelize.STRING,
+    reg_email: {
+      type: String,
       unique: true,
       allowNull: false,
       required: true,
     },
-    registered_contactno: {
-      type: Sequelize.INTEGER,
+    reg_mobile: {
+      type: String,
       allowNull: false,
       required: true,
     },
     department: {
-      type: Sequelize.STRING,
+      type: String,
       allowNull: false,
       required: true,
     },
   },
-
   {
     timestamps: false,
   }
 );
-db.sync().then(() => {
-  console.log("Userdetails DB has been created");
-});
-
-module.exports = Userdetails;
+let userdetails = mongoose.model("userdetails", Userdetails);
+module.exports = userdetails;
+// module.exports = Userdetails = mongoose.model("userdetails", Userdetails);

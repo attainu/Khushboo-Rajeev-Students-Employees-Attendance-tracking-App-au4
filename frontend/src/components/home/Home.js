@@ -14,7 +14,7 @@ class Home extends Component {
         <div className='container userdetail '>
 
           <div>
-            <p>Hi, {user.name}</p>
+            <p className="mt-5">Hi, {user.name}</p>
             <p>Your Joining Date is : {user.joined}</p>
             <p>Your Registered Email is :{user.email}</p>
             <p>Your Registered Mobile is : {user.mobile}</p>

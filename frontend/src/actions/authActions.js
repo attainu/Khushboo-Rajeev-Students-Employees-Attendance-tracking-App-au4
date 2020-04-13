@@ -52,12 +52,12 @@ export const setCurrentUser = (decoded) => {
 
 // getting user data
 
-export const fetchUser = (decoded) => {
+/* export const fetchUser = (decoded) => {
   return {
     type: FETCH_USER,
     payload: decoded,
   };
-};
+}; */
 
 // Log user out
 export const logoutUser = () => (dispatch) => {

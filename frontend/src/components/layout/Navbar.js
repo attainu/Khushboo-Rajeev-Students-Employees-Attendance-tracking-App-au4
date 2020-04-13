@@ -38,7 +38,7 @@ class Navbar extends Component {
 
         <li className='nav-item'>
           <a
-            href=''
+            href='/'
             onClick={this.onLogoutClick.bind(this)}
             className='nav-link'>
             <img
@@ -84,12 +84,6 @@ class Navbar extends Component {
           </button>
 
           <div className='collapse navbar-collapse' id='mobile-nav'>
-            {/* <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                </Link>
-              </li>
-            </ul> */}
             {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>

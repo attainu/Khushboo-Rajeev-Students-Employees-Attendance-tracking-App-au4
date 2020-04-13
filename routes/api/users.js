@@ -95,6 +95,7 @@ router.post("/login", (req, res) => {
             const payload = {
               id: user.id,
               name: user.name,
+              email: user.email,
               avatar: user.avatar,
               mobile: user.mobile,
               department: user.department,
@@ -135,6 +136,7 @@ router.get(
     res.json({
       id: req.user.id,
       name: req.user.name,
+      email: req.user.email,
       avatar: req.user.avatar,
       mobile: req.user.mobile,
       department: req.user.department,

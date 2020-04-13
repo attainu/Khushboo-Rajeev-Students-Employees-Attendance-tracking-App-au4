@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { setCurrentUser } from "../../actions/authActions";
+
 import { connect } from "react-redux";
 
 class Home extends Component {
-  componentWillMount() {
-    this.props.setCurrentUser();
-  }
+
   render() {
+    const { user } = this.props.auth;
+    console.log(user);
+
     return (
       <div className='container-fluid mt-5'>
         <div className='container userdetail '>
-          {this.props.user.map((user, index) => (
-            <div key={index}>
-              <p>Hi, {user.name}</p>
-              <p>Your Joining Date is : {user.joined}</p>
-              <p>Your Registered Email is :{user.email}</p>
-              <p>Your Registered Mobile is : {user.mobile}</p>
-              <p>and Your current department is :{user.department}</p>
-            </div>
-          ))}
+
+          <div>
+            <p>Hi, {user.name}</p>
+            <p>Your Joining Date is : {user.joined}</p>
+            <p>Your Registered Email is :{user.email}</p>
+            <p>Your Registered Mobile is : {user.mobile}</p>
+            <p>and Your current department is :{user.department}</p>
+          </div>
+
         </div>
         <div className='container markattendance mt-4'>
           <div>
@@ -48,11 +49,11 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  user: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user.user,
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { setCurrentUser })(Home);
+export default connect(mapStateToProps)(Home);

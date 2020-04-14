@@ -20,12 +20,12 @@ what we want to achieve
 
 
 */
-
+const User = require("../../models/User");
 const Attendance = require("../../models/Attendance");
 
 // posting attendance to db
 router.post(
-  "/postattendance",
+  "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const userattendance = new Attendance({
@@ -43,13 +43,30 @@ router.post(
 );
 
 // getting attendance from db
-router.get("/getattendance",passport.authenticate("jwt", { session: false }), async (req, res) => {
-  try {
-    const newAttendance = await Attendance.find();
-    res.send(newAttendance);
-  } catch (err) {
-    console.log(err);
+/* router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const newAttendance = await Attendance.find();
+      res.send(newAttendance);
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+); */
+
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.findOne({ user: req.user.username }).then((user) => {
+      const usernameToLookFor = "rajeev"; //req.body.username will go here or req.body.email
+      Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
+        res.send(Attendance);
+      });
+    });
+  }
+);
 
 module.exports = router;

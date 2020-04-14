@@ -4,24 +4,21 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 class Home extends Component {
-
-
   state = {
     status: false,
-    click: false
-
+    click: false,
   };
   handleAttendance = () => {
-
-    this.setState({
-
-      status: true,
-      click: true
-    }, () => {
-      console.log("clicked state", this.state);
-    })
-  }
-
+    this.setState(
+      {
+        status: true,
+        click: true,
+      },
+      () => {
+        console.log("clicked state", this.state);
+      }
+    );
+  };
 
   render() {
     const { user } = this.props.auth;
@@ -29,17 +26,15 @@ class Home extends Component {
 
     return (
       <div className='container-fluid mt-5'>
-        <div className="row">
+        <div className='row'>
           <div className='container userdetail col-sm-12'>
-
             <div>
-              <p className="mt-5">Hi, {user.name}</p>
-              <p>Your Joining Date is : {user.joined}</p>
-              <p>Your Registered Email is :{user.email}</p>
-              <p>Your Registered Mobile is : {user.mobile}</p>
-              <p>and Your current department is :{user.department}</p>
+              <p className='mt-5'>Hi, {user.name}</p>
+              <p>Joining Date is : {user.joined}</p>
+              <p>Registered Email :{user.email}</p>
+              <p>Registered Mobile : {user.mobile}</p>
+              <p>current department :{user.department}</p>
             </div>
-
           </div>
 
           <div className='container markattendance mt-4 col-sm-12'>
@@ -55,18 +50,27 @@ class Home extends Component {
               </p>
               <p>
                 {" "}
-                <button type='submit' className='btn btn-success markbtn mb-4' type='submit'
+                <button
+                  type='submit'
+                  className='btn btn-success markbtn mb-4'
+                  type='submit'
                   disabled={this.state.click === false ? "" : "disable"}
                   onClick={() => {
                     this.handleAttendance();
-                  }} >
+                  }}>
                   I'm Present
-              </button>{" "}
-
+                </button>{" "}
               </p>
               <br></br>
               {}
-              <p className='mt-5' hidden={this.state.status && this.state.click === true ? "" : "hidden"}> Successfully Submitted</p>
+              <p
+                className='mt-5'
+                hidden={
+                  this.state.status && this.state.click === true ? "" : "hidden"
+                }>
+                {" "}
+                Successfully Submitted
+              </p>
             </div>
           </div>
         </div>

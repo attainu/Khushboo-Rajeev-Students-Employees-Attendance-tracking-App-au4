@@ -5,9 +5,8 @@ class Report extends Component {
   render() {
     return (
       <div className='container-fluid mt-5'>
-        <div className="row">
-          <div className="col-sm-5 ">
-
+        <div className='row'>
+          <div className='col-sm-5 '>
             <h2> Report</h2>
 
             <table className='table table-striped reporttable '>
@@ -48,12 +47,9 @@ class Report extends Component {
             </table>
           </div>
 
-          <div className="col-sm-2">
+          <div className='col-sm-2'></div>
 
-          </div>
-
-
-          <div class="col-sm-5">
+          <div className='col-sm-5'>
             <div className='chart'>
               <h2>Chart</h2>
               <ReactMinimalPieChart
@@ -88,7 +84,6 @@ class Report extends Component {
           </div>
         </div>
       </div>
-
     );
   }
 }

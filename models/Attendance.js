@@ -8,6 +8,11 @@ const AttendanceSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
+  //username to uniquely identify the user's attendance
+  username: {
+    type: String,
+    required: true,
+  },
   //status of attendance
   status: {
     type: String,

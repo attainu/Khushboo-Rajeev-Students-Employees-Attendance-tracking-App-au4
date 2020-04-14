@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = require("mongoose");
+const passport = require("passport");
 
 router.get("/test2", (req, res) => res.json({ msg: "Working" }));
 /* Expected response from user
@@ -22,22 +24,26 @@ what we want to achieve
 const Attendance = require("../../models/Attendance");
 
 // posting attendance to db
-router.post("/postattendance", (req, res) => {
-  const userattendance = new Attendance({
-    username: req.body.username,
-    date: req.body.date,
-    status: req.body.status,
-    reason: req.body.reason, //to be added later on
-  });
+router.post(
+  "/postattendance",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const userattendance = new Attendance({
+      username: req.body.username,
+      date: req.body.date,
+      status: req.body.status,
+      reason: req.body.reason, //to be added later on
+    });
 
-  userattendance
-    .save({})
-    .then((userattendance) => res.json(userattendance))
-    .catch((err) => console.log(err));
-});
+    userattendance
+      .save()
+      .then((userattendance) => res.json(userattendance))
+      .catch((err) => console.log(err));
+  }
+);
 
 // getting attendance from db
-router.get("/getattendance", async (req, res) => {
+router.get("/getattendance",passport.authenticate("jwt", { session: false }), async (req, res) => {
   try {
     const newAttendance = await Attendance.find();
     res.send(newAttendance);

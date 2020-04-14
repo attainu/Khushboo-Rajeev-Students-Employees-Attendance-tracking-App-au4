@@ -1,8 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-//import { fetchUser } from "./userAction";
-import { GET_ERRORS, SET_CURRENT_USER, FETCH_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -49,15 +48,6 @@ export const setCurrentUser = (decoded) => {
     payload: decoded,
   };
 };
-
-// getting user data
-
-/* export const fetchUser = (decoded) => {
-  return {
-    type: FETCH_USER,
-    payload: decoded,
-  };
-}; */
 
 // Log user out
 export const logoutUser = () => (dispatch) => {

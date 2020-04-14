@@ -7,7 +7,6 @@ import Ontime from "./Ontime";
 import moment from "moment";
 
 class Home extends Component {
-
   render() {
     const { user } = this.props.auth;
     console.log(user);
@@ -16,15 +15,13 @@ class Home extends Component {
       /* rendering user data provided by the user */
       <div className='container-fluid mt-5'>
         <div className='container userdetail '>
-
           <div>
-            <p className="mt-5">Hi, {user.name}</p>
-            <p>Your Joining Date is : {user.joined}</p>
-            <p>Your Registered Email is :{user.email}</p>
-            <p>Your Registered Mobile is : {user.mobile}</p>
-            <p>and Your current department is :{user.department}</p>
+            <p className='mt-5'>Hi, {user.name}</p>
+            <p>Joining Date : {user.joined}</p>
+            <p>Registered Email :{user.email}</p>
+            <p>Registered Mobile : {user.mobile}</p>
+            <p>Department :{user.department}</p>
           </div>
-
         </div>
         {/* conditionally rendering the I'm Present button */
         /* rendering NORMAL

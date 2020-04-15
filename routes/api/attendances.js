@@ -4,22 +4,6 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 router.get("/test2", (req, res) => res.json({ msg: "Working" }));
-/* Expected response from user
-
-date: 12/12/12
-status: present/absent
-reason: "if any"
-
-*/
-
-/*
-
-what we want to achieve
-1. create a collection after username(which will be unique)
-2. store the response in an object
-
-
-*/
 const User = require("../../models/User");
 const Attendance = require("../../models/Attendance");
 
@@ -43,18 +27,6 @@ router.post(
 );
 
 // getting attendance from db
-/* router.get(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const newAttendance = await Attendance.find();
-      res.send(newAttendance);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-); */
 
 router.get(
   "/",
@@ -70,3 +42,20 @@ router.get(
 );
 
 module.exports = router;
+
+/* Expected response from user
+
+  date: 12/12/12
+  status: present/absent
+  reason: "if any"
+
+  */
+
+/*
+
+  what we want to achieve
+  1. create a collection after username(which will be unique)
+  2. store the response in an object
+
+
+  */

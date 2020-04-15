@@ -13,10 +13,12 @@ class Home extends Component {
       date: "",
       reason: "",
       errors: {},
+      clicks: false
     };
     /* binding change and submit events to "this" */
     // this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
   }
 
   componentDidMount() {
@@ -44,6 +46,9 @@ class Home extends Component {
     //to overide the default form behaviour
     e.preventDefault();
 
+    this.setState({
+      clicks: true
+    })
     const { user } = this.props.auth;
     console.log("consoling name ", user.name);
     const attendance = {
@@ -79,45 +84,40 @@ class Home extends Component {
           </div>
 
           <div className='container markattendance mt-4 col-sm-12'>
-            {/* <div>
-              <p>
-                {" "}
-                <textarea
-                  className='mt-4'
-                  placeholder='Reason for being late today.. '
-                  name='reason'
-                  rows='2'
-                  cols='30'></textarea>
-              </p>
-              <p>
-                {" "}
-                <button
-                  type='submit'
-                  className='btn btn-success markbtn mb-4'
-                  type='submit'
-                  disabled={this.state.click === false ? "" : "disable"}
-                  onClick={() => {
-                    this.handleAttendance();
-                  }}>
-                  I'm Present
+            <div>
+              <form onSubmit={this.onSubmit}>
+                <p>
+                  {" "}
+                  <textarea
+                    className='mt-4'
+                    placeholder='Reason for being late today.. '
+                    name='reason'
+                    rows='2'
+                    cols='30'></textarea>
+                </p>
+                <p>
+                  {" "}
+                  <button
+                    type='submit'
+                    className='btn btn-success markbtn mb-4'
+                    type='submit'
+                  >
+                    I'm Present
                 </button>{" "}
-              </p>
-              <br></br>
-              {}
-              <p
-                className='mt-5'
-                hidden={
-                  this.state.status && this.state.click === true ? "" : "hidden"
-                }>
-                {" "}
+                </p>
+                <br></br>
+                {}
+                <p
+                  className='mt-5'
+                  hidden={
+                    this.state.clicks === true ? "" : "hidden"
+                  }>
+                  {" "}
                 Successfully Submitted
               </p>
-            </div> */}
-            <form onSubmit={this.onSubmit}>
-              <button className='btn btn-danger' type='submit'>
-                Mark Attendance
-              </button>
-            </form>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>

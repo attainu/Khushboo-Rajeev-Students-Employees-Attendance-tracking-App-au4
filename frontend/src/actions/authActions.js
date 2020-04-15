@@ -3,7 +3,7 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
-// Register User
+// REGISTER USER
 export const registerUser = (userData, history) => (dispatch) => {
   axios
     .post("/api/users/register", userData)
@@ -16,7 +16,7 @@ export const registerUser = (userData, history) => (dispatch) => {
     );
 };
 
-// Login - Get User Token
+// LOGIN - GET USER TOKEN
 export const loginUser = (userData) => (dispatch) => {
   axios
     .post("/api/users/login", userData)
@@ -41,7 +41,7 @@ export const loginUser = (userData) => (dispatch) => {
     );
 };
 
-// Set logged in user
+// SET LOGGED IN USER
 export const setCurrentUser = (decoded) => {
   return {
     type: SET_CURRENT_USER,
@@ -49,7 +49,7 @@ export const setCurrentUser = (decoded) => {
   };
 };
 
-// Log user out
+// LOG USER OUT
 export const logoutUser = () => (dispatch) => {
   // Remove token from localStorage
   localStorage.removeItem("jwtToken");

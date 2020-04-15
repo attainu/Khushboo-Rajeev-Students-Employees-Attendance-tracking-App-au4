@@ -1,3 +1,5 @@
+// Creating private route function to protect unauthorised acces
+
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';

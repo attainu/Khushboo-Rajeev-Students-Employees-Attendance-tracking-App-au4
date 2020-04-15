@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { postAttendance, getAttendance } from "../../actions/attendanceActions";
+import { postAttendance } from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Home extends Component {
@@ -13,21 +13,18 @@ class Home extends Component {
       date: "",
       reason: "",
       errors: {},
-      clicks: false
+      clicks: false,
     };
-    /* binding change and submit events to "this" */
-    // this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
   }
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "9:00:00 am" || time <= "10:00:00 am") {
+    if (time >= "9:00:00 am" || time <= "10:00:00 am") {
       this.setState({
         status: "Present",
       });
-    } else if (time === "10:01:00 am" || time <= "5:00:00 pm") {
+    } else if (time >= "10:01:00 am" || time >= "5:00:00 pm") {
       this.setState({
         status: "Late",
       });
@@ -38,17 +35,14 @@ class Home extends Component {
     }
   }
 
-  // onChange(e) {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
-
   onSubmit(e) {
     //to overide the default form behaviour
     e.preventDefault();
-
+    //for showing success message on front end
     this.setState({
-      clicks: true
-    })
+      clicks: true,
+    });
+    // setting data to be sent to postAttendance function
     const { user } = this.props.auth;
     console.log("consoling name ", user.name);
     const attendance = {
@@ -58,20 +52,16 @@ class Home extends Component {
       reason: "",
       errors: {},
     };
-    console.log("attendance", attendance);
-    console.log("state has", this.state);
 
     this.props.postAttendance(attendance);
   }
 
   render() {
     const { user } = this.props.auth;
-    // const { userAttendance } = this.props.attendance;
-    // console.log("userAttendance", userAttendance);
-    // console.log("user", user);
 
     return (
       <div className='container-fluid mt-5'>
+        {/* BLUE BOX DATA */}
         <div className='row'>
           <div className='container userdetail col-sm-12'>
             <div>
@@ -82,7 +72,7 @@ class Home extends Component {
               <p>current department :{user.department}</p>
             </div>
           </div>
-
+          {/* GREEN BOX DATA */}
           <div className='container markattendance mt-4 col-sm-12'>
             <div>
               <form onSubmit={this.onSubmit}>
@@ -99,25 +89,20 @@ class Home extends Component {
                   {" "}
                   <button
                     type='submit'
-                    className='btn btn-success markbtn mb-4'
-                    type='submit'
-                  >
-                    I'm Present
-                </button>{" "}
+                    className='btn btn-success markbtn mb-4'>
+                    Mark attendance
+                  </button>{" "}
                 </p>
                 <br></br>
                 {}
                 <p
                   className='mt-5'
-                  hidden={
-                    this.state.clicks === true ? "" : "hidden"
-                  }>
+                  hidden={this.state.clicks === true ? "" : "hidden"}>
                   {" "}
-                Successfully Submitted
-              </p>
+                  Successfully Submitted
+                </p>
               </form>
             </div>
-
           </div>
         </div>
       </div>
@@ -127,15 +112,11 @@ class Home extends Component {
 
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
-  // attendance: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  attendance: state.userAttendance,
 });
 
-export default connect(mapStateToProps, { postAttendance, getAttendance })(
-  Home
-);
+export default connect(mapStateToProps, { postAttendance })(Home);

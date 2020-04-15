@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import { connect } from "react-redux";
+import { postAttendance } from "../../actions/attendanceActions";
+import attendanceReducer from "../../Redux/reducers/attendanceReducer";
 
 class Home extends Component {
-  state = {
+  /*  state = {
     status: false,
     click: false,
   };
@@ -18,7 +19,34 @@ class Home extends Component {
         console.log("clicked state", this.state);
       }
     );
-  };
+  }; */
+  constructor() {
+    super();
+    this.state = {
+      username: "rajeev",
+      status: "",
+      date: "",
+      reason: "",
+      errors: {},
+    };
+    /* binding change and submit events to "this" */
+    // this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onSubmit(e) {
+    //to overide the default form behaviour
+    e.preventDefault();
+
+    const attendance = {
+      username: "rajeev",
+      status: "",
+      date: "",
+      reason: "",
+      errors: {},
+    };
+
+    this.props.postAttendance(attendance);
+  }
 
   render() {
     const { user } = this.props.auth;
@@ -38,7 +66,7 @@ class Home extends Component {
           </div>
 
           <div className='container markattendance mt-4 col-sm-12'>
-            <div>
+            {/* <div>
               <p>
                 {" "}
                 <textarea
@@ -71,7 +99,12 @@ class Home extends Component {
                 {" "}
                 Successfully Submitted
               </p>
-            </div>
+            </div> */}
+            <form onSubmit={this.onSubmit}>
+              <button className='btn btn-danger' type='submit'>
+                Sign Up
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -81,10 +114,11 @@ class Home extends Component {
 
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
+  postAttendance: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, { postAttendance })(Home);

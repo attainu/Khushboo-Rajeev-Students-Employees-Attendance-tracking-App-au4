@@ -10,11 +10,12 @@ class Register extends Component {
     super();
     this.state = {
       name: "",
+      username: "",
       email: "",
       department: "",
       mobile: "",
       joined: "",
-      avatar:"",
+      avatar: "",
       password: "",
       password2: "",
       errors: {},
@@ -48,6 +49,7 @@ class Register extends Component {
 
     const newUser = {
       name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
       avatar: this.state.avatar,
       department: this.state.department,
@@ -87,6 +89,24 @@ class Register extends Component {
                   />
                   {errors.name && (
                     <div className='invalid-feedback'>{errors.name}</div>
+                  )}
+                </div>
+
+                {/******************** USERNAME INPUT FILED ********************/}
+
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.username,
+                    })}
+                    placeholder='Username'
+                    name='username'
+                    value={this.state.username}
+                    onChange={this.onChange}
+                  />
+                  {errors.username && (
+                    <div className='invalid-feedback'>{errors.username}</div>
                   )}
                 </div>
 

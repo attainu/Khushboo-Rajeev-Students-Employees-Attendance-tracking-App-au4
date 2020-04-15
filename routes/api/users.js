@@ -42,6 +42,7 @@ router.post("/register", (req, res) => {
       //saving user details
       const newUser = new User({
         name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         avatar,
@@ -95,6 +96,7 @@ router.post("/login", (req, res) => {
             const payload = {
               id: user.id,
               name: user.name,
+              username: user.username,
               email: user.email,
               avatar: user.avatar,
               mobile: user.mobile,
@@ -136,6 +138,7 @@ router.get(
     res.json({
       id: req.user.id,
       name: req.user.name,
+      username: req.user.username,
       email: req.user.email,
       avatar: req.user.avatar,
       mobile: req.user.mobile,

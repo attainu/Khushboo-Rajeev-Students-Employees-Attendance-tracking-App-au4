@@ -1,29 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { postAttendance } from "../../actions/attendanceActions";
-import attendanceReducer from "../../Redux/reducers/attendanceReducer";
+import { postAttendance, getAttendance } from "../../actions/attendanceActions";
+import moment from "moment";
 
 class Home extends Component {
-  /*  state = {
-    status: false,
-    click: false,
-  };
-  handleAttendance = () => {
-    this.setState(
-      {
-        status: true,
-        click: true,
-      },
-      () => {
-        console.log("clicked state", this.state);
-      }
-    );
-  }; */
   constructor() {
     super();
     this.state = {
-      username: "rajeev",
+      username: "",
       status: "",
       date: "",
       reason: "",
@@ -33,24 +18,52 @@ class Home extends Component {
     // this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  componentDidMount() {
+    const time = moment().format("h:mm:ss a");
+    if (time === "9:00:00 am" || time <= "10:00:00 am") {
+      this.setState({
+        status: "Present",
+      });
+    } else if (time === "10:01:00 am" || time <= "5:00:00 pm") {
+      this.setState({
+        status: "Late",
+      });
+    } else {
+      this.setState({
+        status: "Absent",
+      });
+    }
+  }
+
+  // onChange(e) {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // }
+
   onSubmit(e) {
     //to overide the default form behaviour
     e.preventDefault();
 
+    const { user } = this.props.auth;
+    console.log("consoling name ", user.name);
     const attendance = {
-      username: "",
-      status: "",
-      date: "",
+      username: user.username,
+      status: this.state.status,
+      date: Date.now(),
       reason: "",
       errors: {},
     };
+    console.log("attendance", attendance);
+    console.log("state has", this.state);
 
     this.props.postAttendance(attendance);
   }
 
   render() {
     const { user } = this.props.auth;
-    console.log("user", user);
+    // const { userAttendance } = this.props.attendance;
+    // console.log("userAttendance", userAttendance);
+    // console.log("user", user);
 
     return (
       <div className='container-fluid mt-5'>
@@ -101,9 +114,8 @@ class Home extends Component {
               </p>
             </div> */}
             <form onSubmit={this.onSubmit}>
-              <input value={user.username} />
               <button className='btn btn-danger' type='submit'>
-                I'm Present
+                Mark Attendance
               </button>
             </form>
           </div>
@@ -115,11 +127,15 @@ class Home extends Component {
 
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
+  // attendance: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  attendance: state.userAttendance,
 });
 
-export default connect(mapStateToProps, { postAttendance })(Home);
+export default connect(mapStateToProps, { postAttendance, getAttendance })(
+  Home
+);

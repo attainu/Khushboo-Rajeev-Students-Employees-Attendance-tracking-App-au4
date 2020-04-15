@@ -1,10 +1,10 @@
-// import isEmpty from "../../validation/is-empty";
+import isEmpty from "../../validation/is-empty";
 
 import { GET_ATTENDANCE } from "../../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  attendance: {},
+  userAttendance: {},
 };
 
 export default function (state = initialState, action) {
@@ -12,7 +12,8 @@ export default function (state = initialState, action) {
     case GET_ATTENDANCE:
       return {
         ...state,
-        attendance: action.payload,
+        isAuthenticated: !isEmpty(action.payload),
+        userAttendance: action.payload,
       };
     default:
       return state;

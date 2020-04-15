@@ -11,7 +11,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GET_ATTENDANCE:
       return {
-        //to be filled
+        ...state,
+        attendance: action.payload,
       };
     default:
       return state;

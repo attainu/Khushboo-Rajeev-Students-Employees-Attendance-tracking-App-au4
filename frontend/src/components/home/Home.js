@@ -38,7 +38,7 @@ class Home extends Component {
     e.preventDefault();
 
     const attendance = {
-      username: "rajeev",
+      username: "",
       status: "",
       date: "",
       reason: "",
@@ -101,8 +101,9 @@ class Home extends Component {
               </p>
             </div> */}
             <form onSubmit={this.onSubmit}>
+              <input value={user.username} />
               <button className='btn btn-danger' type='submit'>
-                Sign Up
+                I'm Present
               </button>
             </form>
           </div>

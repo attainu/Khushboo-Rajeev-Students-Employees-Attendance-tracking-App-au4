@@ -79,7 +79,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.name,
                     })}
                     placeholder='name'
@@ -97,7 +97,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.username,
                     })}
                     placeholder='Username'
@@ -115,7 +115,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='email'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.email,
                     })}
                     placeholder='Email Address'
@@ -136,7 +136,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.department,
                     })}
                     placeholder='Department'
@@ -152,7 +152,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='number'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.mobile,
                     })}
                     placeholder='Mobile'
@@ -170,7 +170,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.name,
                     })}
                     placeholder='joining date'
@@ -188,7 +188,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='password'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.password,
                     })}
                     placeholder='Password'
@@ -206,7 +206,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='password'
-                    className={classnames("form-control form-control-lg", {
+                    className={classnames("form-control form-control", {
                       "is-invalid": errors.password2,
                     })}
                     placeholder='Confirm Password'

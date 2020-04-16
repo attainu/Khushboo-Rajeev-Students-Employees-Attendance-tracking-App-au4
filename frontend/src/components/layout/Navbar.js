@@ -37,7 +37,7 @@ class Navbar extends Component {
         </li>
 
         <li className='nav-item'>
-          <div class='btn-group' role='group'>
+          <div className='btn-group' role='group'>
             <button
               id='btnGroupDrop1'
               type='button'
@@ -54,7 +54,7 @@ class Navbar extends Component {
               />
               {user.username}
             </button>
-            <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+            <div className='dropdown-menu' aria-labelledby='btnGroupDrop1'>
               <a
                 href='/'
                 onClick={this.onLogoutClick.bind(this)}

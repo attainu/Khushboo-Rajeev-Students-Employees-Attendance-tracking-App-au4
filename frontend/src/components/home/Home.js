@@ -15,9 +15,9 @@ class Home extends Component {
       errors: {},
       clicks: false
     };
-    /* binding change and submit events to "this" */
-    // this.onChange = this.onChange.bind(this);
+
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
 
   }
 
@@ -38,9 +38,9 @@ class Home extends Component {
     }
   }
 
-  // onChange(e) {
-  //   this.setState({ [e.target.name]: e.target.value });
-  // }
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   onSubmit(e) {
     //to overide the default form behaviour
@@ -55,7 +55,7 @@ class Home extends Component {
       username: user.username,
       status: this.state.status,
       date: Date.now(),
-      reason: "",
+      reason: this.state.reason,
       errors: {},
     };
     console.log("attendance", attendance);
@@ -66,9 +66,6 @@ class Home extends Component {
 
   render() {
     const { user } = this.props.auth;
-    // const { userAttendance } = this.props.attendance;
-    // console.log("userAttendance", userAttendance);
-    // console.log("user", user);
 
     return (
       <div className='container-fluid mt-5'>
@@ -92,6 +89,8 @@ class Home extends Component {
                     className='mt-4'
                     placeholder='Reason for being late today.. '
                     name='reason'
+                    value={this.state.reason}
+                    onChange={this.onChange}
                     rows='2'
                     cols='30'></textarea>
                 </p>
@@ -127,7 +126,6 @@ class Home extends Component {
 
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
-  // attendance: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
 };
 

@@ -10,7 +10,7 @@ class LeaderBoard extends Component {
                     </div>
 
                     <div className="col-sm-7 ">
-                        <table class="table table-striped leaderboardtable">
+                        <table className="table table-striped leaderboardtable">
                             <thead>
                                 <tr>
 

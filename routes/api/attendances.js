@@ -41,6 +41,19 @@ router.get(
   }
 );
 
+router.get("/report", passport.authenticate("jwt", { session: false }),
+
+  (req, res) => {
+    User.findOne({ user: req.user.username }).then((user) => {
+      const usernameToLookFor = req.user.username;
+      Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
+        res.send(Attendance);
+      });
+    });
+  }
+
+)
+
 module.exports = router;
 
 /* Expected response from user

@@ -23,7 +23,7 @@ const AttendanceSchema = Schema({
   // current date
   date: {
     type: Date,
-    default: Date.now,
+    default: Date().now,
   },
   //reason for the delay
   reason: {

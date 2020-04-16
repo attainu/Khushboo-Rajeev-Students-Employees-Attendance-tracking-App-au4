@@ -105,18 +105,27 @@ p {
 }
 
 /***************************************** Report Page ****************************************/
+.reporttablediv{
+  height: 400px;
+  overflow: scroll;
+
+}
 .reporttable {
   width: 40%;
+  
   float: left;
+  
 }
-.chart {
-  float: right;
-}
+
+/* .chart {
+  padding-left: 30px;
+} */
 
 /****************************************** LeaderBoard Page ***********************************/
 .leaderboardtable {
   width: 50%;
   float: right;
+  overflow: scroll;
 }
 .leaderboarddiv {
   width: 50%;
@@ -127,6 +136,7 @@ p {
 .admintable {
   width: 50%;
   float: right;
+  overflow: scroll;
 }
 .admindiv {
   width: 50%;

@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ATTENDANCE, GET_ERRORS } from "./types";
-import attendanceReducer from "../Redux/reducers/attendanceReducer";
+//import attendanceReducer from "../Redux/reducers/attendanceReducer";
 
 // Posting attendance
 export const postAttendance = (attendanceData) => (dispatch) => {
@@ -21,13 +21,22 @@ export const postAttendance = (attendanceData) => (dispatch) => {
 
 // Getting attendance
 export const getAttendance = () => (dispatch) => {
+
   axios
-    .get("/api/attendance/")
-    .then((res) => console.log("Your attendance data", res.data))
+    .get("/api/attendance/report")
+    .then((res) => {
+      console.log("Your attendance data", res.data);
+      //history.push("/report")
+      dispatch({
+        type: GET_ATTENDANCE,
+        payload: res.data
+      })
+
+    })
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data,
+        payload: err.response.data
       })
     );
 };

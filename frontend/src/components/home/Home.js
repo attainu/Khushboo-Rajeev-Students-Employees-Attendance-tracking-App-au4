@@ -13,12 +13,11 @@ class Home extends Component {
       date: "",
       reason: "",
       errors: {},
-      clicks: false
+      clicks: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
-
   }
 
   componentDidMount() {
@@ -47,8 +46,8 @@ class Home extends Component {
     e.preventDefault();
 
     this.setState({
-      clicks: true
-    })
+      clicks: true,
+    });
     const { user } = this.props.auth;
     console.log("consoling name ", user.name);
     const attendance = {
@@ -98,25 +97,20 @@ class Home extends Component {
                   {" "}
                   <button
                     type='submit'
-                    className='btn btn-success markbtn mb-4'
-                    type='submit'
-                  >
+                    className='btn btn-success markbtn mb-4'>
                     I'm Present
-                </button>{" "}
+                  </button>{" "}
                 </p>
                 <br></br>
                 {}
                 <p
                   className='mt-5'
-                  hidden={
-                    this.state.clicks === true ? "" : "hidden"
-                  }>
+                  hidden={this.state.clicks === true ? "" : "hidden"}>
                   {" "}
-                Successfully Submitted
-              </p>
+                  Successfully Submitted
+                </p>
               </form>
             </div>
-
           </div>
         </div>
       </div>

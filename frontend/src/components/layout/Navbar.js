@@ -37,19 +37,6 @@ class Navbar extends Component {
         </li>
 
         <li className='nav-item'>
-          {/* <a
-            href='/'
-            onClick={this.onLogoutClick.bind(this)}
-            className='nav-link'>
-            <img
-              className='rounded-circle'
-              src={user.avatar}
-              alt={user.name}
-              style={{ width: "25px", marginRight: "5px" }}
-              title='You must have a Gravatar connected to your email to display an image'
-            />{" "}
-            Logout
-          </a> */}
           <div class='btn-group' role='group'>
             <button
               id='btnGroupDrop1'
@@ -96,24 +83,26 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className='navbar navbar-expand-sm mb-4'>
-        <div className='container'>
-          <Link className='navbar-brand' to='/'>
-            EasyAttend
-          </Link>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#mobile-nav'>
-            <span className='navbar-toggler-icon' />
-          </button>
+      <div>
+        <nav className='navbar navbar-expand-sm mb-4'>
+          <div className='container'>
+            <Link className='navbar-brand' to='/'>
+              EasyAttend
+            </Link>
+            <button
+              className='navbar-toggler'
+              type='button'
+              data-toggle='collapse'
+              data-target='#mobile-nav'>
+              <span className='navbar-toggler-icon' />
+            </button>
 
-          <div className='collapse navbar-collapse' id='mobile-nav'>
-            {isAuthenticated ? authLinks : guestLinks}
+            <div className='collapse navbar-collapse' id='mobile-nav'>
+              {isAuthenticated ? authLinks : guestLinks}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }

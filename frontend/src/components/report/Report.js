@@ -6,14 +6,10 @@ import { postAttendance, getAttendance } from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Report extends Component {
-
   componentDidMount() {
     this.props.getAttendance();
   }
-
-
   render() {
-
     const { userAttendance } = this.props.attendance;
     console.log("userAttendance", userAttendance);
 
@@ -36,10 +32,8 @@ class Report extends Component {
                 var t1 = item.date;
                 console.log("time", moment(t1).format('DD-MM-YYYY'));
 
-
                 return (
                   <tbody key={index}>
-
                     <tr >
                       <th scope='row' > {index + 1}</th>
                       <td>{moment(item.date).format('DD-MM-YYYY')}</td>
@@ -48,17 +42,11 @@ class Report extends Component {
                       </td>
                       <td>{item.reason}</td>
                     </tr>
-
-
-
                   </tbody>
                 )
               })}
             </table>
           </div>
-
-
-
           <div className='col-sm-6 col-md-6 col-lg-6'>
             <div className='chart'>
               <h2>Chart</h2>

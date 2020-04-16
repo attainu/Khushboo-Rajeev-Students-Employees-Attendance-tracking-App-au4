@@ -8,12 +8,10 @@ class LeaderBoard extends Component {
                     <div className="leaderboarddiv col-sm-5">
                         <h2 className="mt-5"> Leader-Boards</h2>
                     </div>
-
                     <div className="col-sm-7 ">
                         <table className="table table-striped leaderboardtable">
                             <thead>
                                 <tr>
-
                                     <th scope="col">Rank</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">%</th>
@@ -21,19 +19,16 @@ class LeaderBoard extends Component {
                             </thead>
                             <tbody>
                                 <tr>
-
                                     <td>1</td>
                                     <td>Rajeev Ranjan</td>
                                     <td>100</td>
                                 </tr>
                                 <tr>
-
                                     <td>2</td>
                                     <td>Khushboo Goyal</td>
                                     <td>98</td>
                                 </tr>
                                 <tr>
-
                                     <td> 3</td>
                                     <td>Zibran</td>
                                     <td>92</td>
@@ -43,7 +38,6 @@ class LeaderBoard extends Component {
                     </div>
                 </div >
             </div>
-
         );
     }
 }

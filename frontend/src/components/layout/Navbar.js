@@ -37,7 +37,7 @@ class Navbar extends Component {
         </li>
 
         <li className='nav-item'>
-          <a
+          {/* <a
             href='/'
             onClick={this.onLogoutClick.bind(this)}
             className='nav-link'>
@@ -49,7 +49,33 @@ class Navbar extends Component {
               title='You must have a Gravatar connected to your email to display an image'
             />{" "}
             Logout
-          </a>
+          </a> */}
+          <div class='btn-group' role='group'>
+            <button
+              id='btnGroupDrop1'
+              type='button'
+              className='btn dropdown-toggle'
+              data-toggle='dropdown'
+              aria-haspopup='true'
+              aria-expanded='false'>
+              <img
+                className='rounded-circle'
+                src={user.avatar}
+                alt={user.name}
+                style={{ width: "25px", marginRight: "5px" }}
+                title='You must have a Gravatar connected to your email to display an image'
+              />
+              {user.username}
+            </button>
+            <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+              <a
+                href='/'
+                onClick={this.onLogoutClick.bind(this)}
+                className='nav-link btnGroupDrop1'>
+                Logout
+              </a>
+            </div>
+          </div>
         </li>
       </ul>
     );

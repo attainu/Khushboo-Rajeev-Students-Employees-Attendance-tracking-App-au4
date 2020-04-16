@@ -75,7 +75,6 @@ class Register extends Component {
               <h1 className='display-4 text-center'>Sign Up</h1>
               <form noValidate onSubmit={this.onSubmit}>
                 {/******************** NAME INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='text'
@@ -91,9 +90,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.name}</div>
                   )}
                 </div>
-
                 {/******************** USERNAME INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='text'
@@ -109,9 +106,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.username}</div>
                   )}
                 </div>
-
                 {/******************** EMAIL INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='email'
@@ -131,7 +126,6 @@ class Register extends Component {
                     a Gravatar email
                   </small>
                 </div>
-
                 {/******************** DEPARTMENT INPUT FILED ********************/}
                 <div className='form-group'>
                   <input
@@ -164,9 +158,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.mobile}</div>
                   )}
                 </div>
-
                 {/******************** JOINED INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='date'
@@ -182,9 +174,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.joined}</div>
                   )}
                 </div>
-
                 {/******************** PASSWORD1 INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='password'
@@ -200,9 +190,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.password}</div>
                   )}
                 </div>
-
                 {/******************** PASSWORD2 INPUT FILED ********************/}
-
                 <div className='form-group'>
                   <input
                     type='password'
@@ -218,9 +206,7 @@ class Register extends Component {
                     <div className='invalid-feedback'>{errors.password2}</div>
                   )}
                 </div>
-
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
-
                 <button className='btn btn-danger' type='submit'>
                   Sign Up
                 </button>

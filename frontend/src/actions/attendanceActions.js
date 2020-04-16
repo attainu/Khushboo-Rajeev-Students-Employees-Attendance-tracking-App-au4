@@ -1,8 +1,6 @@
 import axios from "axios";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
 import { GET_ATTENDANCE, GET_ERRORS } from "./types";
-//import attendanceReducer from "../Redux/reducers/attendanceReducer";
+
 
 // Posting attendance
 export const postAttendance = (attendanceData) => (dispatch) => {
@@ -26,7 +24,6 @@ export const getAttendance = () => (dispatch) => {
     .get("/api/attendance/report")
     .then((res) => {
       console.log("Your attendance data", res.data);
-      //history.push("/report")
       dispatch({
         type: GET_ATTENDANCE,
         payload: res.data
@@ -40,3 +37,6 @@ export const getAttendance = () => (dispatch) => {
       })
     );
 };
+
+
+

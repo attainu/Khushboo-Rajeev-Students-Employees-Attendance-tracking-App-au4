@@ -33,7 +33,7 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     User.findOne({ user: req.user.username }).then((user) => {
-      const usernameToLookFor = req.user.username; //req.body.username will go here or req.body.email
+      const usernameToLookFor = req.user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
         res.send(Attendance);
       });
@@ -56,19 +56,3 @@ router.get("/report", passport.authenticate("jwt", { session: false }),
 
 module.exports = router;
 
-/* Expected response from user
-
-  date: 12/12/12
-  status: present/absent
-  reason: "if any"
-
-  */
-
-/*
-
-  what we want to achieve
-  1. create a collection after username(which will be unique)
-  2. store the response in an object
-
-
-  */

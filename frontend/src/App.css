@@ -130,12 +130,12 @@ p {
   padding-left: 30px;
 } */
 /* Hide scrollbar for Chrome, Safari and Opera */
-.example::-webkit-scrollbar {
+.reporttablediv::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE and Edge */
-.example {
+.reporttablediv {
   -ms-overflow-style: none;
 }
 

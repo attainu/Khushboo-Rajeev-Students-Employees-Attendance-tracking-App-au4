@@ -94,6 +94,7 @@ class Report extends Component {
   }
 }
 
+
 Report.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,

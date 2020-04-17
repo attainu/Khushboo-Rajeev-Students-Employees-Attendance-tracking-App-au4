@@ -44,16 +44,13 @@ class Home extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
   onSubmit(e) {
-    //to overide the default form behaviour
     e.preventDefault();
 
     this.setState({
       clicks: true,
     });
     const { user } = this.props.auth;
-    //console.log("consoling name ", user.name);
     const attendance = {
       username: user.username,
       status: this.state.status,
@@ -62,15 +59,11 @@ class Home extends Component {
       color: this.state.color,
       errors: {},
     };
-    /* console.log("attendance", attendance);
-    console.log("state has", this.state); */
-
     this.props.postAttendance(attendance);
   }
 
   render() {
     const { user } = this.props.auth;
-
     return (
       <div className='container-fluid mt-5'>
         <div className='row'>

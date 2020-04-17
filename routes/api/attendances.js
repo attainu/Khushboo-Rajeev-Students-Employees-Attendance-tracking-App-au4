@@ -17,7 +17,6 @@ router.post(
       date: req.body.date,
       status: req.body.status,
       reason: req.body.reason,
-      /*  color: req.body.color //to be added later on */
     });
 
     userattendance
@@ -48,10 +47,6 @@ router.get("/report", passport.authenticate("jwt", { session: false }),
     User.findOne({ user: req.user.username }).then((user) => {
       const usernameToLookFor = req.user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
-
-        //res.send(Attendance);
-
-        /* I have to call function for calculating total attendances according to the status. */
         const attendanceCount = getTotalStatusWiseCount(Attendance)
 
         const attendance = {
@@ -78,9 +73,7 @@ const getTotalStatusWiseCount = (attendance) => {
       absent++;
     }
   })
-
   return { presentTotal: present, absentTotal: absent, lateTotal: late };
-
 }
 
 module.exports = router;

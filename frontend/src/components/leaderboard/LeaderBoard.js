@@ -14,6 +14,7 @@ class LeaderBoard extends Component {
                                 <tr>
                                     <th scope="col">Rank</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
                                     <th scope="col">%</th>
                                 </tr>
                             </thead>
@@ -21,16 +22,19 @@ class LeaderBoard extends Component {
                                 <tr>
                                     <td>1</td>
                                     <td>Rajeev Ranjan</td>
+                                    <td>eviilraj</td>
                                     <td>100</td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Khushboo Goyal</td>
+                                    <td>Khush27</td>
                                     <td>98</td>
                                 </tr>
                                 <tr>
                                     <td> 3</td>
                                     <td>Zibran</td>
+                                    <td>Zebra male</td>
                                     <td>92</td>
                                 </tr>
                             </tbody>

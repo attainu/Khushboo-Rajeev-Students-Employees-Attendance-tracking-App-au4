@@ -6,19 +6,16 @@ import { postAttendance, getAttendance } from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Report extends Component {
-
   componentDidMount = () => {
     this.props.getAttendance();
   }
 
   render() {
-
     const { userAttendance } = this.props.attendance;
     /* console.log("userAttendance", userAttendance); */
 
     const { attendaceData, totalAttendanceStatusWiseCount } = userAttendance;
     /* console.log("attendaceData, totalAttendanceStatusWiseCount", attendaceData, totalAttendanceStatusWiseCount); */
-
 
     return (
       <div className='container-fluid mt-5' >
@@ -93,7 +90,6 @@ class Report extends Component {
     );
   }
 }
-
 
 Report.propTypes = {
   auth: PropTypes.object.isRequired,

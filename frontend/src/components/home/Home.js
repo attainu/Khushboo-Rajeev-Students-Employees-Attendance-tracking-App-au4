@@ -13,6 +13,7 @@ class Home extends Component {
       date: "",
       reason: "",
       errors: {},
+      color: "",
       clicks: false,
     };
 
@@ -22,17 +23,20 @@ class Home extends Component {
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "9:00:00 am" || time <= "10:00:00 am") {
+    if (time === "9:00:00 am" || time <= "6:00:00 pm") {
       this.setState({
         status: "Present",
+        color: "#95e1d3"
       });
     } else if (time === "10:01:00 am" || time <= "5:00:00 pm") {
       this.setState({
         status: "Late",
+        color: "#fce38a"
       });
     } else {
       this.setState({
         status: "Absent",
+        color: "#f38181"
       });
     }
   }
@@ -49,16 +53,17 @@ class Home extends Component {
       clicks: true,
     });
     const { user } = this.props.auth;
-    console.log("consoling name ", user.name);
+    //console.log("consoling name ", user.name);
     const attendance = {
       username: user.username,
       status: this.state.status,
       date: Date.now(),
       reason: this.state.reason,
+      color: this.state.color,
       errors: {},
     };
-    console.log("attendance", attendance);
-    console.log("state has", this.state);
+    /* console.log("attendance", attendance);
+    console.log("state has", this.state); */
 
     this.props.postAttendance(attendance);
   }
@@ -72,7 +77,7 @@ class Home extends Component {
           <div className='container userdetail col-sm-12'>
             <div>
               <p className='mt-5'>Hi, {user.name}</p>
-              <p>Joining Date is : {user.joined}</p>
+              <p>Joining Date is : {moment(user.joined).format('DD-MM-YYYY')}</p>
               <p>Registered Email :{user.email}</p>
               <p>Registered Mobile : {user.mobile}</p>
               <p>current department :{user.department}</p>

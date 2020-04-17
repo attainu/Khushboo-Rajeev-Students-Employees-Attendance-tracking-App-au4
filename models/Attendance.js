@@ -29,6 +29,7 @@ const AttendanceSchema = Schema({
   reason: {
     type: String,
   },
+
 });
 
 module.exports = Attendance = mongoose.model("attendances", AttendanceSchema);

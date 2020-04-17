@@ -6,15 +6,22 @@ import { postAttendance, getAttendance } from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Report extends Component {
-  componentDidMount() {
+
+  componentDidMount = () => {
     this.props.getAttendance();
   }
+
   render() {
+
     const { userAttendance } = this.props.attendance;
-    console.log("userAttendance", userAttendance);
+    /* console.log("userAttendance", userAttendance); */
+
+    const { attendaceData, totalAttendanceStatusWiseCount } = userAttendance;
+    /* console.log("attendaceData, totalAttendanceStatusWiseCount", attendaceData, totalAttendanceStatusWiseCount); */
+
 
     return (
-      <div className='container-fluid mt-5'>
+      <div className='container-fluid mt-5' >
         <div className='row'>
           <div className='col-sm-6 col-md-6 col-lg-6 reporttablediv'>
             <h2> Report</h2>
@@ -28,9 +35,8 @@ class Report extends Component {
                   <th scope='col'>Note</th>
                 </tr>
               </thead>
-              {userAttendance && userAttendance.map((item, index) => {
+              {attendaceData && attendaceData.map((item, index) => {
                 var t1 = item.date;
-                console.log("time", moment(t1).format('DD-MM-YYYY'));
 
                 return (
                   <tbody key={index}>
@@ -50,24 +56,26 @@ class Report extends Component {
           <div className='col-sm-6 col-md-6 col-lg-6'>
             <div className='chart'>
               <h2>Chart</h2>
+              {/*  {console.log("pie chart state", this.state)} */}
               <ReactMinimalPieChart
                 cx={60}
                 cy={40}
+
                 data={[
                   {
                     color: "#f38181",
-                    title: "One",
-                    value: 10,
+                    title: "Absent",
+                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.absentTotal : 0,
                   },
                   {
                     color: "#fce38a",
-                    title: "Two",
-                    value: 15,
+                    title: "Late",
+                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.lateTotal : 0,
                   },
                   {
                     color: "#95e1d3",
-                    title: "Three",
-                    value: 20,
+                    title: "Present",
+                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.presentTotal : 0,
                   },
                 ]}
                 label
@@ -89,7 +97,7 @@ class Report extends Component {
 Report.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
-  getAttendance: PropTypes.func.isRequired,
+  //getAttendance: PropTypes.func.isRequired,
   attendance: PropTypes.object.isRequired
 };
 
@@ -101,3 +109,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { postAttendance, getAttendance })(
   Report
 );
+

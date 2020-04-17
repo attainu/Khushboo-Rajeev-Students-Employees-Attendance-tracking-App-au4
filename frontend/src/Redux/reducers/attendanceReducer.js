@@ -1,5 +1,4 @@
 import isEmpty from "../../validation/is-empty";
-
 import { GET_ATTENDANCE } from "../../actions/types";
 
 const initialState = {
@@ -8,7 +7,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-
   switch (action.type) {
     case GET_ATTENDANCE:
       return {
@@ -16,9 +14,7 @@ export default function (state = initialState, action) {
         isAuthenticated: !isEmpty(action.payload),
         userAttendance: action.payload,
       };
-
     default:
-
       return state;
   }
 }

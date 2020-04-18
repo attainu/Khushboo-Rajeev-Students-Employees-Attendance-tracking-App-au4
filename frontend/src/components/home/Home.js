@@ -63,6 +63,7 @@ class Home extends Component {
   }
 
   render() {
+    const time = moment().format("h:mm:ss a");
     const { user } = this.props.auth;
     return (
       <div className='container-fluid mt-5'>
@@ -80,8 +81,7 @@ class Home extends Component {
           <div className='container markattendance mt-4 col-sm-12'>
             <div>
               <form onSubmit={this.onSubmit}>
-                <p>
-                  {" "}
+                <p hidden={(time === "10:01:00 am" || time <= "5:00:00 pm") ? "" : "hidden"}>
                   <textarea
                     className='mt-4'
                     placeholder='Reason for being late today.. '
@@ -94,6 +94,7 @@ class Home extends Component {
                 <p>
                   {" "}
                   <button
+                    disabled={this.state.clicks === true ? "disabled" : ""}
                     type='submit'
                     className='btn btn-success markbtn mb-4'>
                     I'm Present

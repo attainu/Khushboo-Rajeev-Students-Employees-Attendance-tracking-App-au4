@@ -23,7 +23,7 @@ class Home extends Component {
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "9:00:00 am" || time <= "6:00:00 pm") {
+    if (time === "9:00:00 am" || time <= "10:00:00 am") {
       this.setState({
         status: "Present",
         color: "#95e1d3"

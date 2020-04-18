@@ -92,7 +92,6 @@ class Home extends Component {
                     cols='30'></textarea>
                 </p>
                 <p>
-
                   <button
                     disabled={this.state.clicks === true ? "disabled" : ""}
                     type='submit'
@@ -101,11 +100,9 @@ class Home extends Component {
                   </button>
                 </p>
                 <br></br>
-
                 <p
                   className='mt-5'
                   hidden={this.state.clicks === true ? "" : "hidden"}>
-
                   Successfully Submitted
                 </p>
               </form>

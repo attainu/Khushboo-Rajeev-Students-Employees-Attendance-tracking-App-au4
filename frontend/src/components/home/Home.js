@@ -113,7 +113,6 @@ class Home extends Component {
     );
   }
 }
-
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,

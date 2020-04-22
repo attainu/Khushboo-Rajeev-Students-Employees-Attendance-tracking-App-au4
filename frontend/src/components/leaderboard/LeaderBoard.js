@@ -1,10 +1,19 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getAllUsersAttendance } from "../../actions/attendanceActions";
 class LeaderBoard extends Component {
+    componentDidMount = () => {
+        this.props.getAllUsersAttendance();
+    }
+
     render() {
+        const { allUsers } = this.props.leaderboardsattendance;
+        console.log("allUsers", allUsers);
+
         return (
             <div className="container-fluid mt-5">
                 <div className="row">
-
                     <div className="leaderboarddiv col-sm-5">
                         <h2 className="mt-5"> Leader-Boards</h2>
                     </div>
@@ -18,26 +27,19 @@ class LeaderBoard extends Component {
                                     <th scope="col">%</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Rajeev Ranjan</td>
-                                    <td>eviilraj</td>
-                                    <td>100</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Khushboo Goyal</td>
-                                    <td>Khush27</td>
-                                    <td>98</td>
-                                </tr>
-                                <tr>
-                                    <td> 3</td>
-                                    <td>Zibran</td>
-                                    <td>Zebra male</td>
-                                    <td>92</td>
-                                </tr>
-                            </tbody>
+                            {allUsers && allUsers.map((item, index) => {
+                                console.log("asdfg", allUsers);
+                                return (
+                                    <tbody key={index}>
+                                        <tr>
+                                            <th scope='row' > {index + 1}</th>
+                                            <td>{item.name}</td>
+                                            <td>{item.username}</td>
+                                            <td>{item.prcount.percentages} </td>
+                                        </tr>
+                                    </tbody>
+                                )
+                            })}
                         </table>
                     </div>
                 </div >
@@ -45,4 +47,21 @@ class LeaderBoard extends Component {
         );
     }
 }
-export default LeaderBoard;
+
+LeaderBoard.propTypes = {
+    auth: PropTypes.object.isRequired,
+    getAllUsersAttendance: PropTypes.func.isRequired,
+    leaderboardsattendance: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    attendance: state.attendance,
+    leaderboardsattendance: state.leaderboardsattendance
+});
+
+
+export default connect(mapStateToProps, { getAllUsersAttendance })(
+    LeaderBoard
+);
+

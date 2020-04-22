@@ -2,38 +2,60 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
+const moment = require("moment");
 
 router.get("/test2", (req, res) => res.json({ msg: "Working" }));
 const User = require("../../models/User");
-const Attendance = require("../../models/Attendance");
+const { Attendance, AttendanceDataSchemaForUser } = require("../../models/Attendance");
+
 
 // posting attendance to db
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const userattendance = new Attendance({
-      username: req.body.username,
+    const allattendance = new AttendanceDataSchemaForUser({
       date: req.body.date,
       status: req.body.status,
       reason: req.body.reason,
+    })
+    const userattendance = new Attendance({
+      name: req.body.name,
+      username: req.body.username,
+      attendance: [allattendance]
     });
+    Attendance
+      .findOne({ username: req.body.username }).then((attendancedata) => {
+        console.log("attendancedata", attendancedata);
+        //If User's Attendance data is not present then create it. 
+        if (!attendancedata) {
+          //For creating a new doc.
+          userattendance
+            .save()
+            .then((userattendance) => res.json(userattendance))
+            .catch((err) => console.log(err));
+        }
+        //If User's Attendance data is already present then update the data by inserting new entries.
+        else {
+          var userat = attendancedata.attendance;
+          userat.push(allattendance);
+          console.log("uttttt", userat);
+          Attendance.findOneAndUpdate({ username: req.body.username }, { $set: { attendance: userat } }, { new: true }, (err, doc) => {
+            console.log("doc", doc);
+            res.json(doc);
+          })
 
-    userattendance
-      .save()
-      .then((userattendance) => res.json(userattendance))
-      .catch((err) => console.log(err));
-  }
-);
+        }
+      })
+  })
 
 // getting attendance from db
-
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findOne({ user: req.user.username }).then((user) => {
-      const usernameToLookFor = req.user.username;
+    User.findOne({ user: req.body.username }).then((user) => {
+      const usernameToLookFor = user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
         res.send(Attendance);
       });
@@ -41,29 +63,33 @@ router.get(
   }
 );
 
+//For Report-
 router.get("/report", passport.authenticate("jwt", { session: false }),
 
   (req, res) => {
-    User.findOne({ user: req.user.username }).then((user) => {
-      const usernameToLookFor = req.user.username;
+    User.findOne({ user: req.body.username }).then((user) => {
+      const usernameToLookFor = user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
-        const attendanceCount = getTotalStatusWiseCount(Attendance)
+        const a = Attendance[0].attendance;
+        console.log("aaaaa", a);
+        const attendanceCount = getTotalStatusWiseCount(a)
 
         const attendance = {
-          attendaceData: Attendance,
+          attendaceData: a,
           totalAttendanceStatusWiseCount: attendanceCount
         }
         res.send(attendance);
       });
     });
   }
-
 )
-
 const getTotalStatusWiseCount = (attendance) => {
   let present = 0;
   let late = 0;
   let absent = 0;
+  let presentPercentage = 0.0;
+  const time = moment().format("M");
+
   attendance.map((item) => {
     if (item.status === "Present") {
       present++;
@@ -73,8 +99,92 @@ const getTotalStatusWiseCount = (attendance) => {
       absent++;
     }
   })
-  return { presentTotal: present, absentTotal: absent, lateTotal: late };
+
+  switch (time) {
+    case '1': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '2': presentPercentage = ((present / 28) * 100);
+      break;
+
+    case '3': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '4': presentPercentage = ((present / 30) * 100);
+      break;
+
+    case '5': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '6': presentPercentage = ((present / 30) * 100);
+      break;
+
+    case '7': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '8': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '9': presentPercentage = ((present / 30) * 100);
+      break;
+
+    case '10': presentPercentage = ((present / 31) * 100);
+      break;
+
+    case '11': presentPercentage = ((present / 30) * 100);
+      break;
+
+    case '12': presentPercentage = ((present / 31) * 100);
+      break;
+
+    default:
+      break;
+  }
+
+  return { presentTotal: present, absentTotal: absent, lateTotal: late, percentages: presentPercentage };
 }
+
+//For Leaderboards-
+router.get(
+  "/leaderboards",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Attendance.find({}).then((attendancedata) => {
+      console.log("attendancedata", attendancedata);
+
+      var attendanceMap = [];
+      attendancedata.forEach(function (user) {
+        var b = user.attendance;
+
+        var count = getTotalStatusWiseCount(b);
+        attendanceMap.push({ username: user.username, name: user.name, prcount: count });
+      });
+
+      res.send(attendanceMap);
+    });
+  }
+);
+
+//For Admin-
+router.get(
+  "/admin",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Attendance.find({}).then((attendancedata) => {
+      console.log("attendancedata", attendancedata);
+
+      var attendanceAdminMap = [];
+      attendancedata.forEach(function (user) {
+        var forAdmin = user.attendance;
+
+        var count = getTotalStatusWiseCount(forAdmin);
+        attendanceAdminMap.push({ username: user.username, name: user.name, prcount: count });
+      });
+
+      res.send(attendanceAdminMap);
+    });
+  }
+);
 
 module.exports = router;
 

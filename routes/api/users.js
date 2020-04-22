@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 const gravatar = require("gravatar");
-
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 
@@ -149,4 +148,5 @@ router.get(
     // res.json({ msg: "success" });
   }
 );
+
 module.exports = router;

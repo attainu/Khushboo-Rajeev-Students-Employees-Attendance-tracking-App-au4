@@ -1,7 +1,18 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getAllUsersAttendance } from "../../actions/attendanceActions";
+
 
 class Admin extends Component {
+  componentDidMount = () => {
+    this.props.getAllUsersAttendance();
+  }
   render() {
+
+    const { allUsers } = this.props.leaderboardsattendance;
+    console.log("allUsers", allUsers);
+
     return (
       <div className='container-fluid mt-5'>
         <div className="row">
@@ -15,32 +26,27 @@ class Admin extends Component {
             <table className='table table-striped admintable mt-2'>
               <thead>
                 <tr>
+                  <th scope='col'>#</th>
                   <th scope='col'>Employee</th>
                   <th scope='col'>Present</th>
                   <th scope='col'>Absent</th>
                   <th scope='col'>Late</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Rajeev Ranjan</td>
-                  <td>26</td>
-                  <td>0</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <td>Khushboo Goyal</td>
-                  <td>22</td>
-                  <td>4</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>Zibran</td>
-                  <td>18</td>
-                  <td>8</td>
-                  <td>7</td>
-                </tr>
-              </tbody>
+              {allUsers && allUsers.map((item, index) => {
+                console.log("asdfg", allUsers);
+                return (
+                  <tbody key={index}>
+                    <tr>
+                      <th scope='row' > {index + 1}</th>
+                      <td>{item.name}</td>
+                      <td>{item.prcount.presentTotal}</td>
+                      <td>{item.prcount.absentTotal}</td>
+                      <td>{item.prcount.lateTotal}</td>
+                    </tr>
+                  </tbody>
+                )
+              })}
             </table>
           </div>
         </div>
@@ -48,4 +54,19 @@ class Admin extends Component {
     );
   }
 }
-export default Admin;
+Admin.propTypes = {
+  auth: PropTypes.object.isRequired,
+  getAllUsersAttendance: PropTypes.func.isRequired,
+  leaderboardsattendance: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  attendance: state.attendance,
+  leaderboardsattendance: state.leaderboardsattendance
+});
+
+
+export default connect(mapStateToProps, { getAllUsersAttendance })(
+  Admin
+);

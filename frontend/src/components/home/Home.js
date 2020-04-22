@@ -9,6 +9,7 @@ class Home extends Component {
     super();
     this.state = {
       username: "",
+      name: "",
       status: "",
       date: "",
       reason: "",
@@ -53,6 +54,7 @@ class Home extends Component {
     const { user } = this.props.auth;
     const attendance = {
       username: user.username,
+      name: user.name,
       status: this.state.status,
       date: Date.now(),
       reason: this.state.reason,
@@ -93,7 +95,7 @@ class Home extends Component {
                 </p>
                 <p>
                   <button
-                    disabled={this.state.clicks === true ? "disabled" : ""}
+                    disabled={this.state.clicks === true || time >= "5:00:00 pm" ? "disabled" : ""}
                     type='submit'
                     className='btn btn-success markbtn mb-4'>
                     I'm Present

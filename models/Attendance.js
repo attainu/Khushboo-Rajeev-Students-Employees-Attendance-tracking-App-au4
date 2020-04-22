@@ -1,19 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Attendance schema
-const AttendanceSchema = Schema({
-  //to get all the data from users collection in attendance
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "users",
-  },
-  //username to uniquely identify the user's attendance
-  username: {
-    type: String,
-    required: true,
-  },
-  //status of attendance
+const AttendanceDataSchemaForUser = Schema({
   status: {
     type: String,
     enum: ["Present", "Absent", "Late"],
@@ -23,13 +11,33 @@ const AttendanceSchema = Schema({
   // current date
   date: {
     type: Date,
-    default: Date.now,
+    //default: Date.now,
   },
   //reason for the delay
   reason: {
     type: String,
   },
+})
 
+
+//Attendance schema
+const AttendanceSchema = Schema({
+  //username to uniquely identify the user's attendance
+  name: {
+    type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  attendance: [
+    AttendanceDataSchemaForUser
+  ]
 });
 
-module.exports = Attendance = mongoose.model("attendances", AttendanceSchema);
+module.exports = {
+  AttendanceDataSchemaForUser: mongoose.model("attendancedataschemaforusers", AttendanceDataSchemaForUser),
+  Attendance: mongoose.model("attendances", AttendanceSchema)
+}
+

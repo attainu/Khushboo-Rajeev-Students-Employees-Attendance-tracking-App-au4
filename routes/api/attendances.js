@@ -70,6 +70,7 @@ router.get("/report", passport.authenticate("jwt", { session: false }),
     User.findOne({ user: req.body.username }).then((user) => {
       const usernameToLookFor = user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
+        console.log("report", Attendance);
         const a = Attendance[0].attendance;
         console.log("aaaaa", a);
         const attendanceCount = getTotalStatusWiseCount(a)
@@ -100,48 +101,51 @@ const getTotalStatusWiseCount = (attendance) => {
     }
   })
 
+  let pTotal = present + late;
+  console.log("pTotal", pTotal);
+
   switch (time) {
-    case '1': presentPercentage = ((present / 31) * 100);
+    case '1': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '2': presentPercentage = ((present / 28) * 100);
+    case '2': presentPercentage = ((pTotal / 28) * 100);
       break;
 
-    case '3': presentPercentage = ((present / 31) * 100);
+    case '3': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '4': presentPercentage = ((present / 30) * 100);
+    case '4': presentPercentage = ((pTotal / 30) * 100);
       break;
 
-    case '5': presentPercentage = ((present / 31) * 100);
+    case '5': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '6': presentPercentage = ((present / 30) * 100);
+    case '6': presentPercentage = ((pTotal / 30) * 100);
       break;
 
-    case '7': presentPercentage = ((present / 31) * 100);
+    case '7': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '8': presentPercentage = ((present / 31) * 100);
+    case '8': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '9': presentPercentage = ((present / 30) * 100);
+    case '9': presentPercentage = ((pTotal / 30) * 100);
       break;
 
-    case '10': presentPercentage = ((present / 31) * 100);
+    case '10': presentPercentage = ((pTotal / 31) * 100);
       break;
 
-    case '11': presentPercentage = ((present / 30) * 100);
+    case '11': presentPercentage = ((pTotal / 30) * 100);
       break;
 
-    case '12': presentPercentage = ((present / 31) * 100);
+    case '12': presentPercentage = ((pTotal / 31) * 100);
       break;
 
     default:
       break;
   }
 
-  return { presentTotal: present, absentTotal: absent, lateTotal: late, percentages: presentPercentage };
+  return { presentTotal: present, absentTotal: absent, lateTotal: late, percentages: presentPercentage.toPrecision(4) };
 }
 
 //For Leaderboards-

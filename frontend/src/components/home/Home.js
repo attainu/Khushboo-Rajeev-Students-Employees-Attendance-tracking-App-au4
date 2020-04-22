@@ -24,12 +24,12 @@ class Home extends Component {
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "9:00:00 am" || time <= "10:00:00 am") {
+    if (time === "7:00:00 pm" || time <= "8:00:00 pm") {
       this.setState({
         status: "Present",
         color: "#95e1d3"
       });
-    } else if (time === "10:01:00 am" || time <= "5:00:00 pm") {
+    } else if (time === "8:01:00 pm" || time <= "9:00:00 pm") {
       this.setState({
         status: "Late",
         color: "#fce38a"
@@ -83,7 +83,7 @@ class Home extends Component {
           <div className='container markattendance mt-4 col-sm-12'>
             <div>
               <form onSubmit={this.onSubmit}>
-                <p hidden={(time === "10:01:00 am" || time <= "5:00:00 pm") ? "" : "hidden"}>
+                <p hidden={(time === "8:01:00 pm" || time <= "9:00:00 pm") ? "" : "hidden"}>
                   <textarea
                     className='mt-4'
                     placeholder='Reason for being late today.. '
@@ -95,7 +95,7 @@ class Home extends Component {
                 </p>
                 <p>
                   <button
-                    disabled={this.state.clicks === true || time >= "5:00:00 pm" ? "disabled" : ""}
+                    disabled={this.state.clicks === true || time >= "9:00:00 pm" ? "disabled" : ""}
                     type='submit'
                     className='btn btn-success markbtn mb-4'>
                     I'm Present

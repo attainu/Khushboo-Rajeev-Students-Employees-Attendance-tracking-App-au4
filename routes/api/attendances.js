@@ -54,8 +54,8 @@ router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findOne({ user: req.body.username }).then((user) => {
-      const usernameToLookFor = user.username;
+    User.findOne({ user: req.user.username }).then((user) => {
+      const usernameToLookFor = req.user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
         res.send(Attendance);
       });
@@ -67,8 +67,8 @@ router.get(
 router.get("/report", passport.authenticate("jwt", { session: false }),
 
   (req, res) => {
-    User.findOne({ user: req.body.username }).then((user) => {
-      const usernameToLookFor = user.username;
+    User.findOne({ user: req.user.username }).then((user) => {
+      const usernameToLookFor = req.user.username;
       Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
         console.log("report", Attendance);
         const a = Attendance[0].attendance;
@@ -181,8 +181,8 @@ router.get(
       attendancedata.forEach(function (user) {
         var forAdmin = user.attendance;
 
-        var count = getTotalStatusWiseCount(forAdmin);
-        attendanceAdminMap.push({ username: user.username, name: user.name, prcount: count });
+        var countAdmin = getTotalStatusWiseCount(forAdmin);
+        attendanceAdminMap.push({ username: user.username, name: user.name, prcount: countAdmin });
       });
 
       res.send(attendanceAdminMap);

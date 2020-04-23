@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const AttendanceDataSchemaForUser = Schema({
   status: {
     type: String,
-    enum: ["Present", "Absent", "Late"],
+    enum: ["Ontime", "Absent", "Late"],
     default: "Absent",
     required: true,
   },
@@ -17,12 +17,14 @@ const AttendanceDataSchemaForUser = Schema({
   reason: {
     type: String,
   },
-})
-
+});
 
 //Attendance schema
 const AttendanceSchema = Schema({
   //username to uniquely identify the user's attendance
+  avatar: {
+    type: String,
+  },
   name: {
     type: String,
     required: true,
@@ -31,13 +33,13 @@ const AttendanceSchema = Schema({
     type: String,
     required: true,
   },
-  attendance: [
-    AttendanceDataSchemaForUser
-  ]
+  attendance: [AttendanceDataSchemaForUser],
 });
 
 module.exports = {
-  AttendanceDataSchemaForUser: mongoose.model("attendancedataschemaforusers", AttendanceDataSchemaForUser),
-  Attendance: mongoose.model("attendances", AttendanceSchema)
-}
-
+  AttendanceDataSchemaForUser: mongoose.model(
+    "attendancedataschemaforusers",
+    AttendanceDataSchemaForUser
+  ),
+  Attendance: mongoose.model("attendances", AttendanceSchema),
+};

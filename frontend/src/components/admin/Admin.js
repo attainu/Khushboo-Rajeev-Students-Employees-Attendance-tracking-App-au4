@@ -26,20 +26,28 @@ class Admin extends Component {
                 <tr>
                   <th scope='col'>#</th>
                   <th scope='col'>Employee</th>
-                  <th scope='col'>Present</th>
+                  <th scope='col'>Ontime</th>
                   <th scope='col'>Absent</th>
                   <th scope='col'>Late</th>
                 </tr>
               </thead>
               {allUsers &&
                 allUsers.map((item, index) => {
-                  console.log("asdfg", allUsers);
+                  // console.log("asdfg", allUsers);
                   return (
                     <tbody key={index}>
                       <tr>
                         <th scope='row'> {index + 1}</th>
-                        <td>{item.name}</td>
-                        <td>{item.prcount.presentTotal}</td>
+                        <td>
+                          <img
+                            className='rounded-circle'
+                            src={item.avatar}
+                            alt={item.name}
+                            style={{ width: "25px", marginRight: "5px" }}
+                          />
+                          {item.name}
+                        </td>
+                        <td>{item.prcount.ontimeTotal}</td>
                         <td>{item.prcount.absentTotal}</td>
                         <td>{item.prcount.lateTotal}</td>
                       </tr>

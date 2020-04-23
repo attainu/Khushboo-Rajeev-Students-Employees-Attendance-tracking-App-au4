@@ -69,7 +69,8 @@ footer {
 /************************************ Home CSS *****************************************/
 
 body {
-  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+  background-image: linear-gradient(90deg, #a1c4fd 100%, #c2e9fb 100%);
 }
 
 .markbtn {
@@ -78,14 +79,14 @@ body {
   right: 27%;
 }
 
-textarea {
+/* textarea {
   position: absolute;
   right: 27%;
   line-height: 1.5;
   border-radius: 5px;
   border: 1px solid rgb(160, 155, 155);
   box-shadow: 1px 1px 1px #999;
-}
+} */
 p {
   text-align: center;
 }
@@ -95,6 +96,11 @@ p {
   right: 27%;
 }
 
+.card {
+  width: 18rem;
+  height: 15rem;
+  background-image: linear-gradient(90deg, #a1c4fd 100%, #c2e9fb 100%);
+}
 /***************************************** Report Page ****************************************/
 .reporttablediv {
   height: 400px;
@@ -135,8 +141,4 @@ p {
 .admindiv {
   width: 50%;
   float: left;
-}
-
-table {
-  width: 100%;
 }

@@ -8,6 +8,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
+      avatar: "",
       username: "",
       name: "",
       status: "",
@@ -24,12 +25,12 @@ class Home extends Component {
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "9:00:00 pm" || time <= "10:00:00 pm") {
+    if (time === "9:00:00 am" || time <= "10:00:00 am") {
       this.setState({
-        status: "Present",
+        status: "Ontime",
         color: "#95e1d3",
       });
-    } else if (time === "10:01:00 pm" || time <= "2:00:00 am") {
+    } else if (time === "10:01:00 am" || time <= "5:00:00 pm") {
       this.setState({
         status: "Late",
         color: "#fce38a",
@@ -53,6 +54,7 @@ class Home extends Component {
     });
     const { user } = this.props.auth;
     const attendance = {
+      avatar: user.avatar,
       username: user.username,
       name: user.name,
       status: this.state.status,
@@ -70,7 +72,6 @@ class Home extends Component {
     return (
       <div className='container'>
         <div className='row userinfo'>
-
           <div className='col-lg-6'>
             <img
               src={user.avatar}
@@ -104,46 +105,42 @@ class Home extends Component {
               </tbody>
             </table>
           </div>
-
         </div>
         <div className='row'>
-          <div className='col lg-12'>
-            <form onSubmit={this.onSubmit}>
-              <p>
-                <textarea
-                  hidden={
-                    time === "10:01:00 pm" || time <= "2:00:00 am"
-                      ? ""
-                      : "hidden"
-                  }
-                  className='mt-4'
-                  placeholder='Reason for being late today.. '
-                  name='reason'
-                  value={this.state.reason}
-                  onChange={this.onChange}
-                  rows='3'
-                  cols='30'></textarea>
-              </p>
-              <button
-                disabled={
-                  this.state.clicks === true || time >= "2:00:00 am"
-                    ? "disabled"
-                    : ""
-                }
-                type='submit'
-                className='btn btn-success markbtn mb-4 '>
-                I'm Present
-              </button>
-
-              <br></br>
-              <div className='successmessage'>
-                <p
-                  className='mt-5'
-                  hidden={this.state.clicks === true ? "" : "hidden"}>
-                  Successfully Submitted
-                </p>
+          <div className='col lg-6'>
+            <div className='card mt-5 border-0'>
+              <div className='card-body'>
+                <form onSubmit={this.onSubmit}>
+                  <div className='form-group'>
+                    <textarea
+                      className='form-control'
+                      placeholder='reason why you were late'
+                      name='reason'
+                      rows='3'
+                      value={this.state.reason}
+                      onChange={this.onChange}
+                      // wee need to use visiblity class to show and hide textarea
+                      // className='invisible'
+                      /* hidden={
+                        time === "9:00:00 am" || time <= "10:00:00 am"
+                          ? ""
+                          : "hidden"
+                      } */
+                    ></textarea>
+                  </div>
+                  <button type='submit' className='btn btn-success'>
+                    Mark attendance
+                  </button>
+                </form>
+                <div className='successmessage'>
+                  <p
+                    className='mt-4'
+                    hidden={this.state.clicks === true ? "" : "hidden"}>
+                    Successfully Submitted
+                  </p>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

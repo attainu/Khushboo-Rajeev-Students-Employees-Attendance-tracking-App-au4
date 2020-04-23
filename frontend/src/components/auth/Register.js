@@ -52,7 +52,7 @@ class Register extends Component {
       username: this.state.username,
       email: this.state.email,
       avatar: this.state.avatar,
-      department: this.state.department,
+      department: this.state.department.toUpperCase(),
       mobile: this.state.mobile,
       joined: this.state.joined,
       password: this.state.password,

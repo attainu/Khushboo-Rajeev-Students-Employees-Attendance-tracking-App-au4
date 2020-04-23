@@ -34,8 +34,6 @@ class Report extends Component {
               </thead>
               {attendaceData &&
                 attendaceData.map((item, index) => {
-                  var t1 = item.date;
-
                   return (
                     <tbody key={index}>
                       <tr>
@@ -73,9 +71,9 @@ class Report extends Component {
                   },
                   {
                     color: "#27A644",
-                    title: "Present",
+                    title: "Ontime",
                     value: totalAttendanceStatusWiseCount
-                      ? totalAttendanceStatusWiseCount.presentTotal
+                      ? totalAttendanceStatusWiseCount.ontimeTotal
                       : 0,
                   },
                 ]}

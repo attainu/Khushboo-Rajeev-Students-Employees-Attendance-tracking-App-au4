@@ -89,13 +89,6 @@ class Navbar extends Component {
             <Link className='navbar-brand' to='/'>
               EasyAttend
             </Link>
-            <button
-              className='navbar-toggler'
-              type='button'
-              data-toggle='collapse'
-              data-target='#mobile-nav'>
-              <span className='navbar-toggler-icon' />
-            </button>
 
             <div className='collapse navbar-collapse' id='mobile-nav'>
               {isAuthenticated ? authLinks : guestLinks}

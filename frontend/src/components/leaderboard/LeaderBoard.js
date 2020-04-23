@@ -34,7 +34,15 @@ class LeaderBoard extends Component {
                     <tbody key={index}>
                       <tr>
                         <th scope='row'> {index + 1}</th>
-                        <td>{item.name}</td>
+                        <td>
+                          <img
+                            className='rounded-circle'
+                            src={item.avatar}
+                            alt={item.name}
+                            style={{ width: "25px", marginRight: "5px" }}
+                          />
+                          {item.name}
+                        </td>
                         <td>{item.username}</td>
                         <td>{item.prcount.percentages} </td>
                       </tr>

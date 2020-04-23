@@ -24,20 +24,20 @@ class Home extends Component {
 
   componentDidMount() {
     const time = moment().format("h:mm:ss a");
-    if (time === "6:00:00 pm" || time <= "8:00:00 pm") {
+    if (time === "9:00:00 pm" || time <= "10:00:00 pm") {
       this.setState({
         status: "Present",
-        color: "#95e1d3"
+        color: "#95e1d3",
       });
-    } else if (time === "8:01:00 pm" || time <= "9:00:00 pm") {
+    } else if (time === "10:01:00 pm" || time <= "2:00:00 am") {
       this.setState({
         status: "Late",
-        color: "#fce38a"
+        color: "#fce38a",
       });
     } else {
       this.setState({
         status: "Absent",
-        color: "#f38181"
+        color: "#f38181",
       });
     }
   }
@@ -68,47 +68,82 @@ class Home extends Component {
     const time = moment().format("h:mm:ss a");
     const { user } = this.props.auth;
     return (
-      <div className='container-fluid mt-5'>
-        <div className='row'>
-          <div className='container userdetail col-sm-12'>
-            <div>
-              <p className='mt-5'>Hi, {user.name}</p>
-              <p>Joining Date is : {moment(user.joined).format('DD-MM-YYYY')}</p>
-              <p>Registered Email :{user.email}</p>
-              <p>Registered Mobile : {user.mobile}</p>
-              <p>current department :{user.department}</p>
-            </div>
+      <div className='container'>
+        <div className='row userinfo'>
+
+          <div className='col-lg-6'>
+            <img
+              src={user.avatar}
+              alt={user.name}
+              style={{ width: "200px", marginRight: "5px" }}
+            />
+            <h4>{user.name}</h4>
           </div>
 
-          <div className='container markattendance mt-4 col-sm-12'>
-            <div>
-              <form onSubmit={this.onSubmit}>
-                <p hidden={(time === "8:01:00 pm" || time <= "9:00:00 pm") ? "" : "hidden"}>
-                  <textarea
-                    className='mt-4'
-                    placeholder='Reason for being late today.. '
-                    name='reason'
-                    value={this.state.reason}
-                    onChange={this.onChange}
-                    rows='2'
-                    cols='30'></textarea>
-                </p>
-                <p>
-                  <button
-                    disabled={this.state.clicks === true || time >= "9:00:00 pm" ? "disabled" : ""}
-                    type='submit'
-                    className='btn btn-success markbtn mb-4'>
-                    I'm Present
-                  </button>
-                </p>
-                <br></br>
+          <div className='col-lg-6'>
+            <table className='table table-borderless'>
+              <tbody>
+                <tr>
+                  <th scope='row'>Joined on</th>
+                  <td>{moment(user.joined).format("DD-MM-YYYY")}</td>
+                </tr>
+
+                <tr>
+                  <th scope='row'>Registered Mobile</th>
+                  <td>{user.mobile}</td>
+                </tr>
+
+                <tr>
+                  <th scope='row'>Registered Email</th>
+                  <td>{user.email}</td>
+                </tr>
+                <tr>
+                  <th scope='row'>Department</th>
+                  <td>{user.department}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div className='row'>
+          <div className='col lg-12'>
+            <form onSubmit={this.onSubmit}>
+              <p>
+                <textarea
+                  hidden={
+                    time === "10:01:00 pm" || time <= "2:00:00 am"
+                      ? ""
+                      : "hidden"
+                  }
+                  className='mt-4'
+                  placeholder='Reason for being late today.. '
+                  name='reason'
+                  value={this.state.reason}
+                  onChange={this.onChange}
+                  rows='3'
+                  cols='30'></textarea>
+              </p>
+              <button
+                disabled={
+                  this.state.clicks === true || time >= "2:00:00 am"
+                    ? "disabled"
+                    : ""
+                }
+                type='submit'
+                className='btn btn-success markbtn mb-4 '>
+                I'm Present
+              </button>
+
+              <br></br>
+              <div className='successmessage'>
                 <p
                   className='mt-5'
                   hidden={this.state.clicks === true ? "" : "hidden"}>
                   Successfully Submitted
                 </p>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>

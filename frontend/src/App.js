@@ -18,9 +18,9 @@ import Home from "./components/home/Home";
 import Report from "./components/report/Report";
 import LeaderBoard from "./components/leaderboard/LeaderBoard";
 import Admin from "./components/admin/Admin";
-
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 import "./App.css";
-
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -50,7 +50,7 @@ class App extends Component {
           <div className='App'>
             <Navbar />
             <Route exact path='/' component={Landing} />
-            <div className='container'>
+            <div>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               {/* protected routes goes here */}

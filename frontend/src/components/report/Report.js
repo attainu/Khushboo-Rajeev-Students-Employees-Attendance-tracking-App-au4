@@ -8,7 +8,7 @@ import moment from "moment";
 class Report extends Component {
   componentDidMount = () => {
     this.props.getAttendance();
-  }
+  };
 
   render() {
     const { userAttendance } = this.props.attendance;
@@ -18,7 +18,7 @@ class Report extends Component {
     /* console.log("attendaceData, totalAttendanceStatusWiseCount", attendaceData, totalAttendanceStatusWiseCount); */
 
     return (
-      <div className='container-fluid mt-5' >
+      <div className='container mt-5'>
         <div className='row'>
           <div className='col-sm-6 col-md-6 col-lg-6 reporttablediv'>
             <h2> Report</h2>
@@ -32,22 +32,21 @@ class Report extends Component {
                   <th scope='col'>Note</th>
                 </tr>
               </thead>
-              {attendaceData && attendaceData.map((item, index) => {
-                var t1 = item.date;
+              {attendaceData &&
+                attendaceData.map((item, index) => {
+                  var t1 = item.date;
 
-                return (
-                  <tbody key={index}>
-                    <tr >
-                      <th scope='row' > {index + 1}</th>
-                      <td>{moment(item.date).format('DD-MM-YYYY')}</td>
-                      <td>
-                        {item.status}
-                      </td>
-                      <td>{item.reason}</td>
-                    </tr>
-                  </tbody>
-                )
-              })}
+                  return (
+                    <tbody key={index}>
+                      <tr>
+                        <th scope='row'> {index + 1}</th>
+                        <td>{moment(item.date).format("DD-MM-YYYY")}</td>
+                        <td>{item.status}</td>
+                        <td>{item.reason}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
             </table>
           </div>
           <div className='col-sm-6 col-md-6 col-lg-6'>
@@ -57,22 +56,27 @@ class Report extends Component {
               <ReactMinimalPieChart
                 cx={60}
                 cy={40}
-
                 data={[
                   {
-                    color: "#f38181",
+                    color: "#FE0739",
                     title: "Absent",
-                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.absentTotal : 0,
+                    value: totalAttendanceStatusWiseCount
+                      ? totalAttendanceStatusWiseCount.absentTotal
+                      : 0,
                   },
                   {
-                    color: "#fce38a",
+                    color: "#ffc93c",
                     title: "Late",
-                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.lateTotal : 0,
+                    value: totalAttendanceStatusWiseCount
+                      ? totalAttendanceStatusWiseCount.lateTotal
+                      : 0,
                   },
                   {
-                    color: "#95e1d3",
+                    color: "#27A644",
                     title: "Present",
-                    value: totalAttendanceStatusWiseCount ? totalAttendanceStatusWiseCount.presentTotal : 0,
+                    value: totalAttendanceStatusWiseCount
+                      ? totalAttendanceStatusWiseCount.presentTotal
+                      : 0,
                   },
                 ]}
                 label
@@ -95,15 +99,14 @@ Report.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
   //getAttendance: PropTypes.func.isRequired,
-  attendance: PropTypes.object.isRequired
+  attendance: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  attendance: state.attendance
+  attendance: state.attendance,
 });
 
 export default connect(mapStateToProps, { postAttendance, getAttendance })(
   Report
 );
-

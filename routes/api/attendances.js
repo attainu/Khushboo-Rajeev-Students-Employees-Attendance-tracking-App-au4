@@ -16,6 +16,7 @@ router.post(
   (req, res) => {
     const allattendance = new AttendanceDataSchemaForUser({
       date: req.body.date,
+
       status: req.body.status,
       reason: req.body.reason,
     })
@@ -164,10 +165,17 @@ router.get(
         attendanceMap.push({ username: user.username, name: user.name, prcount: count });
       });
 
-      res.send(attendanceMap);
+      const sortedresponce = sortDescending(attendanceMap)
+      res.send(sortedresponce);
     });
   }
 );
+
+sortDescending = (sortedData) => {
+  console.log("sortedData", sortedData);
+  sortedData.sort((a, b) => b.prcount.percentages - a.prcount.percentages);
+  return sortedData
+}
 
 //For Admin-
 router.get(

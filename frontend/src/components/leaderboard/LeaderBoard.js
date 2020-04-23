@@ -7,6 +7,8 @@ class LeaderBoard extends Component {
         this.props.getAllUsersAttendance();
     }
 
+
+
     render() {
         const { allUsers } = this.props.leaderboardsattendance;
         console.log("allUsers", allUsers);

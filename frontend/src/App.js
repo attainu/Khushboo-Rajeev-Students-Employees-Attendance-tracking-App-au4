@@ -18,9 +18,8 @@ import Home from "./components/home/Home";
 import Report from "./components/report/Report";
 import LeaderBoard from "./components/leaderboard/LeaderBoard";
 import Admin from "./components/admin/Admin";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.js";
 import "./App.css";
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth

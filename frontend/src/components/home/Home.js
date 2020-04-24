@@ -120,7 +120,7 @@ class Home extends Component {
                       value={this.state.reason}
                       onChange={this.onChange}
                       // wee need to use visiblity class to show and hide textarea
-                      className='invisible'
+                      //className='invisible'
                       hidden={
                         time === "9:30:00 am" || time <= "12:00:00 pm"
                           ? ""

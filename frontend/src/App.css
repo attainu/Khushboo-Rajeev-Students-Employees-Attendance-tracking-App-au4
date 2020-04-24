@@ -110,7 +110,6 @@ p {
   width: 40%;
   float: left;
 }
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .reporttablediv::-webkit-scrollbar {
   display: none;

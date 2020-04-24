@@ -17,6 +17,7 @@ class Home extends Component {
       errors: {},
       color: "",
       clicks: false,
+      invisible: "visible",
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -39,6 +40,13 @@ class Home extends Component {
       this.setState({
         status: "Absent",
         color: "#f38181",
+      });
+    }
+    const { user } = this.props.auth;
+
+    if (user.email === "admin@gmail.com") {
+      this.setState({
+        invisible: "invisible",
       });
     }
   }
@@ -108,37 +116,44 @@ class Home extends Component {
         </div>
         <div className='row'>
           <div className='col lg-6'>
-            <div className='card mt-5 border-0'>
-              <div className='card-body'>
-                <form onSubmit={this.onSubmit}>
-                  <div className='form-group'>
-                    <textarea
-                      className='form-control'
-                      placeholder='reason why you were late'
-                      name='reason'
-                      rows='3'
-                      value={this.state.reason}
-                      onChange={this.onChange}
-                      // wee need to use visiblity class to show and hide textarea
-                      //className='invisible'
-                      hidden={
-                        time === "9:30:00 am" || time <= "12:00:00 pm"
-                          ? ""
-                          : "hidden"
-                      }
-                    ></textarea>
+            <div className={this.state.invisible}>
+              <div className='card mt-5 border-0'>
+                <div className='card-body'>
+                  <form onSubmit={this.onSubmit}>
+                    <div className='form-group'>
+                      <textarea
+                        className='form-control'
+                        placeholder='reason why you were late'
+                        name='reason'
+                        rows='3'
+                        value={this.state.reason}
+                        onChange={this.onChange}
+                        // wee need to use visiblity class to show and hide textarea
+                        //className='invisible'
+                        hidden={
+                          time === "9:30:00 am" || time <= "12:00:00 pm"
+                            ? ""
+                            : "hidden"
+                        }></textarea>
+                    </div>
+                    <button
+                      type='submit'
+                      className='btn btn-success'
+                      /* disabled={ this.state.clicks === true || time >= "12:00:00 pm"
+                          ? "disabled"
+                          : ""
+                       } */
+                    >
+                      Mark attendance
+                    </button>
+                  </form>
+                  <div className='successmessage'>
+                    <p
+                      className='mt-4'
+                      hidden={this.state.clicks === true ? "" : "hidden"}>
+                      Successfully Submitted
+                    </p>
                   </div>
-                  <button type='submit' className='btn btn-success'
-                    disabled={this.state.clicks === true || time >= "12:00:00 pm" ? "disabled" : ""}>
-                    Mark attendance
-                  </button>
-                </form>
-                <div className='successmessage'>
-                  <p
-                    className='mt-4'
-                    hidden={this.state.clicks === true ? "" : "hidden"}>
-                    Successfully Submitted
-                  </p>
                 </div>
               </div>
             </div>

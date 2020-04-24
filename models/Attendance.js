@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const AttendanceDataSchemaForUser = Schema({
   status: {
     type: String,
@@ -13,12 +12,17 @@ const AttendanceDataSchemaForUser = Schema({
     type: Date,
     //default: Date.now,
   },
+  month: {
+    type: String
+  },
+  year: {
+    type: String
+  },
   //reason for the delay
   reason: {
     type: String,
   },
 });
-
 //Attendance schema
 const AttendanceSchema = Schema({
   //username to uniquely identify the user's attendance
@@ -35,7 +39,6 @@ const AttendanceSchema = Schema({
   },
   attendance: [AttendanceDataSchemaForUser],
 });
-
 module.exports = {
   AttendanceDataSchemaForUser: mongoose.model(
     "attendancedataschemaforusers",

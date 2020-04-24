@@ -40,7 +40,7 @@ class Report extends Component {
                         <th scope='row'> {index + 1}</th>
                         <td>{moment(item.date).format("DD-MM-YYYY")}</td>
                         <td>{item.status}</td>
-                        <td>{item.reason}</td>
+                        <td className='reasontd'>{item.reason}</td>
                       </tr>
                     </tbody>
                   );

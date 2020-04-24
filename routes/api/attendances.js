@@ -80,18 +80,22 @@ router.get(
   (req, res) => {
     User.findOne({ user: req.user.username }).then((user) => {
       const usernameToLookFor = req.user.username;
-      Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
-        // console.log("report", Attendance);
-        const a = Attendance[0].attendance;
-        // console.log("aaaaa", a);
-        const attendanceCount = getTotalStatusWiseCount(a);
+      Attendance.find({ username: usernameToLookFor })
+        .then((Attendance) => {
+          // console.log("report", Attendance);
+          const a = Attendance[0].attendance;
+          // console.log("aaaaa", a, Attendance);
+          const attendanceCount = getTotalStatusWiseCount(a);
 
-        const attendance = {
-          attendaceData: a,
-          totalAttendanceStatusWiseCount: attendanceCount,
-        };
-        res.send(attendance);
-      });
+          const attendance = {
+            attendaceData: a,
+            totalAttendanceStatusWiseCount: attendanceCount,
+          };
+          res.send(attendance);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
   }
 );

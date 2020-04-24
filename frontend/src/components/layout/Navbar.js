@@ -12,60 +12,98 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
-    const authLinks = (
-      <ul className='navbar-nav ml-auto'>
-        <li className='nav-item'>
-          <Link className='nav-link' to='/home'>
-            Home
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link className='nav-link' to='/report'>
-            Report
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link className='nav-link' to='/leaderboards'>
-            Leaderboards
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link className='nav-link' to='/admin'>
-            Admin
-          </Link>
-        </li>
-
-        <li className='nav-item'>
-          <div className='btn-group' role='group'>
-            <button
-              id='btnGroupDrop1'
-              type='button'
-              className='btn dropdown-toggle'
-              data-toggle='dropdown'
-              aria-haspopup='true'
-              aria-expanded='false'>
-              <img
-                className='rounded-circle'
-                src={user.avatar}
-                alt={user.name}
-                style={{ width: "25px", marginRight: "5px" }}
-                title='You must have a Gravatar connected to your email to display an image'
-              />
-              {user.username}
-            </button>
-            <div className='dropdown-menu' aria-labelledby='btnGroupDrop1'>
-              <a
-                href='/'
-                onClick={this.onLogoutClick.bind(this)}
-                className='nav-link btnGroupDrop1'>
-                Logout
-              </a>
+    if (user.email === "admin@gmail.com") {
+      console.log("u are admin");
+      /* show logout button only */
+      var authLinks = (
+        <ul className='navbar-nav ml-auto'>
+          <li className='nav-item'></li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/admin'>
+              Admin
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <div className='btn-group' role='group'>
+              <button
+                id='btnGroupDrop1'
+                type='button'
+                className='btn dropdown-toggle'
+                data-toggle='dropdown'
+                aria-haspopup='true'
+                aria-expanded='false'>
+                <img
+                  className='rounded-circle'
+                  src={user.avatar}
+                  alt={user.name}
+                  style={{ width: "25px", marginRight: "5px" }}
+                  title='You must have a Gravatar connected to your email to display an image'
+                />
+                {user.username}
+              </button>
+              <div className='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+                <a
+                  href='/'
+                  onClick={this.onLogoutClick.bind(this)}
+                  className='nav-link btnGroupDrop1'>
+                  Logout
+                </a>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-    );
+          </li>
+        </ul>
+      );
+    } else {
+      /* show user links */
+      var authLinks = (
+        <ul className='navbar-nav ml-auto'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/home'>
+              Home
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/report'>
+              Report
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/leaderboards'>
+              Leaderboards
+            </Link>
+          </li>
+
+          <li className='nav-item'>
+            <div className='btn-group' role='group'>
+              <button
+                id='btnGroupDrop1'
+                type='button'
+                className='btn dropdown-toggle'
+                data-toggle='dropdown'
+                aria-haspopup='true'
+                aria-expanded='false'>
+                <img
+                  className='rounded-circle'
+                  src={user.avatar}
+                  alt={user.name}
+                  style={{ width: "25px", marginRight: "5px" }}
+                  title='You must have a Gravatar connected to your email to display an image'
+                />
+                {user.username}
+              </button>
+              <div className='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+                <a
+                  href='/'
+                  onClick={this.onLogoutClick.bind(this)}
+                  className='nav-link btnGroupDrop1'>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      );
+    }
 
     const guestLinks = (
       <ul className='navbar-nav ml-auto'>

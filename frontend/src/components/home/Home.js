@@ -120,15 +120,16 @@ class Home extends Component {
                       value={this.state.reason}
                       onChange={this.onChange}
                       // wee need to use visiblity class to show and hide textarea
-                      // className='invisible'
-                      /* hidden={
-                        time === "9:00:00 am" || time <= "10:00:00 am"
+                      className='invisible'
+                      hidden={
+                        time === "9:30:00 am" || time <= "12:00:00 pm"
                           ? ""
                           : "hidden"
-                      } */
+                      }
                     ></textarea>
                   </div>
-                  <button type='submit' className='btn btn-success'>
+                  <button type='submit' className='btn btn-success'
+                    disabled={this.state.clicks === true || time >= "12:00:00 pm" ? "disabled" : ""}>
                     Mark attendance
                   </button>
                 </form>

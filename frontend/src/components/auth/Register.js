@@ -106,16 +106,16 @@ class Register extends Component {
 
     return (
       <div className='register'>
-        <div className='container'>
+        <div className='container mb-5'>
           <div className='row'>
             <div className='col-md-5 m-auto'>
-              <h1 className='display-4 text-center'>Sign Up</h1>
+              <h2 className='display-4 text-center'>Sign Up</h2>
               <form noValidate onSubmit={this.onSubmit}>
                 {/******************** NAME INPUT FILED ********************/}
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.name,
                     })}
                     placeholder='name'
@@ -131,7 +131,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.username,
                     })}
                     placeholder='Username'
@@ -147,7 +147,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='email'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.email,
                     })}
                     placeholder='Email Address'
@@ -167,7 +167,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='text'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.department,
                     })}
                     placeholder='Department'
@@ -184,7 +184,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='number'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.mobile,
                     })}
                     placeholder='Mobile'
@@ -200,7 +200,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.name,
                     })}
                     placeholder='joining date'
@@ -216,7 +216,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='password'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.password,
                     })}
                     placeholder='Password'
@@ -232,7 +232,7 @@ class Register extends Component {
                 <div className='form-group'>
                   <input
                     type='password'
-                    className={classnames("form-control form-control", {
+                    className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.password2,
                     })}
                     placeholder='Confirm Password'
@@ -246,7 +246,7 @@ class Register extends Component {
                 </div>
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
                 <button
-                  className='btn btn-danger'
+                  className='btn btn-danger mb-5'
                   type='submit' /*
                   disabled={this.state.buttonstatus} */
                 >

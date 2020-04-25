@@ -56,7 +56,7 @@ class Login extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-md-5 m-auto'>
-              <h1 className='display-4 text-center'>Log In</h1>
+              <h2 className='display-4 text-center'>Log In</h2>
               {/******************** EMAIL INPUT FILED ********************/}
               <form onSubmit={this.onSubmit}>
                 <div className='form-group'>

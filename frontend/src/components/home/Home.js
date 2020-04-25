@@ -142,7 +142,7 @@ class Home extends Component {
                       type='submit'
                       className='btn btn-success'
                       disabled={
-                        this.state.clicks === true || time > 5 ? "disabled" : ""
+                        this.state.clicks === true || time > 17 ? "disabled" : ""
                       }  >
                       Mark attendance
                     </button>

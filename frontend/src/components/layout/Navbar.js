@@ -45,7 +45,8 @@ class Navbar extends Component {
                 <a
                   href='/'
                   onClick={this.onLogoutClick.bind(this)}
-                  className='nav-link btnGroupDrop1'>
+                  className='nav-link btnGroupDrop1'
+                  id='logout'>
                   <i className='fas fa-sign-out-alt'></i>Logout
                 </a>
               </div>

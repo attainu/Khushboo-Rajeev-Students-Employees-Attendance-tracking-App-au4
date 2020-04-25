@@ -25,23 +25,23 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // const time = moment().format("h:mm:ss a");
+    //const time = moment().format("h:mm:ss a");
     const time = new Date().getHours();
 
     if (time >= 9 && time <= 10) {
       this.setState({
         status: "Ontime",
-        color: "#95e1d3",
+        color: "#27A644",
       });
     } else if (time > 10 || time <= 17) {
       this.setState({
         status: "Late",
-        color: "#fce38a",
+        color: "#ffc93c",
       });
     } else {
       this.setState({
         status: "Absent",
-        color: "#f38181",
+        color: "#FE0739",
       });
     }
     const { user } = this.props.auth;
@@ -77,7 +77,7 @@ class Home extends Component {
   }
 
   render() {
-    // const time = moment().format("h:mm:ss a");
+    //const time = moment().format("h:mm:ss a");
     const time = new Date().getHours();
     console.log(time);
     const { user } = this.props.auth;
@@ -135,7 +135,7 @@ class Home extends Component {
                         // wee need to use visiblity class to show and hide textarea
                         //className='invisible'
                         hidden={
-                          time >= 9 || time <= 10 ? "hidden" : ""
+                          (time > 10 || time <= 17) ? "" : "hidden"
                         }></textarea>
                     </div>
                     <button
@@ -143,7 +143,7 @@ class Home extends Component {
                       className='btn btn-success'
                       disabled={
                         this.state.clicks === true || time > 5 ? "disabled" : ""
-                      }>
+                      }  >
                       Mark attendance
                     </button>
                   </form>

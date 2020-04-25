@@ -43,13 +43,16 @@ nav {
   color: white;
   font-weight: bold;
 }
-.btnGroupDrop1 {
+#logout {
   color: #364f6b;
 }
-.btnGroupDrop1:hover {
+#logout:hover {
   color: #364f6b;
 }
-
+.dropdown-menu {
+  min-width: 7rem;
+  border-radius: 8px;
+}
 .homeLink .reportLink .leaderboardLink {
   text-align: left;
 }

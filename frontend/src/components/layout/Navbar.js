@@ -97,7 +97,7 @@ class Navbar extends Component {
                   onClick={this.onLogoutClick.bind(this)}
                   className='nav-link '
                   id='logout'>
-                  <i class='fas fa-sign-out-alt'></i>Logout
+                  <i className='fas fa-sign-out-alt'></i>Logout
                 </a>
               </div>
             </div>
@@ -123,23 +123,23 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav class='navbar navbar-expand-md navbar-dark bg dark mb-5'>
+        <nav className='navbar navbar-expand-md navbar-dark bg dark mb-5'>
           <div className='container'>
             <Link className='navbar-brand' to='/'>
               EasyAttend
             </Link>
             <button
-              class='navbar-toggler collapsed'
+              className='navbar-toggler collapsed'
               type='button'
               data-toggle='collapse'
               data-target='#navbarSupportedContent'
               aria-controls='navbarSupportedContent'
               aria-expanded='false'
               aria-label='Toggle navigation'>
-              <span class='navbar-toggler-icon'></span>
+              <span className='navbar-toggler-icon'></span>
             </button>
-            <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-              <ul class='navbar-nav ml-auto'>
+            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+              <ul className='navbar-nav ml-auto'>
                 <div
                   className='collapse navbar-collapse'
                   id='navbarSupportedContent'>

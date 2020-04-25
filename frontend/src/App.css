@@ -1,19 +1,36 @@
-img {
-  width: 100%;
+#landingImage{
+  background-image: url("https://img.freepik.com/free-vector/creative-office-co-working-center-university-campus-modern-workplace_48369-11863.jpg?size=626&ext=jpg");
+  height: 40vh;
+  opacity: 70%;
 }
+
 
 .landing {
   background-color: #f5f5f5;
 }
 
 .landing-inner {
-  padding-top: 80px;
+  padding-top: 20px;
+}
+#fullcard{
+  margin-left: 18%;
 }
 
-.card-form {
-  opacity: 0.9;
+#aboutUs{
+  padding: 0;
+  margin: 0;
+  height: 80%;
+width:18rem;
+text-align: center;
 }
 
+#contactUs{
+  height: 80%;
+  padding: 0;
+  margin: 0;
+  width:18rem;
+  text-align: center;
+}
 .latest-profiles-img {
   width: 40px;
   height: 40px;
@@ -50,7 +67,7 @@ nav {
   color: #364f6b;
 }
 .dropdown-menu {
-  min-width: 7rem;
+  min-width: 5rem;
   border-radius: 8px;
 }
 .homeLink .reportLink .leaderboardLink {
@@ -93,7 +110,7 @@ p {
 
 .card {
   margin-left: 50%;
-  width: 15rem;
+  width: 20rem;
   height: 15rem;
   background-image: linear-gradient(90deg, #dbe2ef 100%, #dbe2ef 100%);
 }

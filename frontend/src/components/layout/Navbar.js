@@ -46,7 +46,7 @@ class Navbar extends Component {
                   href='/'
                   onClick={this.onLogoutClick.bind(this)}
                   className='nav-link btnGroupDrop1'>
-                  Logout
+                  <i className='fas fa-sign-out-alt'></i>Logout
                 </a>
               </div>
             </div>
@@ -138,7 +138,9 @@ class Navbar extends Component {
               aria-label='Toggle navigation'>
               <span className='navbar-toggler-icon'></span>
             </button>
-            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <div
+              className='collapse navbar-collapse'
+              id='navbarSupportedContent'>
               <ul className='navbar-nav ml-auto'>
                 <div
                   className='collapse navbar-collapse'

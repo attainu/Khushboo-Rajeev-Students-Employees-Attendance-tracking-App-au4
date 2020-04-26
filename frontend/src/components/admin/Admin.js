@@ -19,9 +19,9 @@ class Admin extends Component {
             <input type='month' name='birthday' placeholder='mm-yyyy' />
           </div>
 
-          <div className='col-sm-8'>
+          <div className='col-sm-8 mb-5 pb-5'>
             <h2 style={{ textAlign: "center" }}>Employees Attendance Data</h2>
-            <table className='table table-striped admintable mt-2'>
+            <table className='table table-striped admintable '>
               <thead>
                 <tr>
                   <th scope='col'>#</th>

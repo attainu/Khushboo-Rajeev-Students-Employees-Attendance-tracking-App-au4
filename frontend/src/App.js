@@ -18,6 +18,9 @@ import Home from "./components/home/Home";
 import Report from "./components/report/Report";
 import LeaderBoard from "./components/leaderboard/LeaderBoard";
 import Admin from "./components/admin/Admin";
+import Requests from "./components/admin/Requests";
+import Leave from "./components/leave/LeaveRequest";
+
 import "./App.css";
 
 // Check for token
@@ -67,7 +70,13 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
+                <PrivateRoute exact path='/leaverequest' component={Leave} />
+              </Switch>
+              <Switch>
                 <PrivateRoute exact path='/admin' component={Admin} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path='/requests' component={Requests} />
               </Switch>
             </div>
             <Footer />

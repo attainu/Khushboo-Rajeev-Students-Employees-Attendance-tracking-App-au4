@@ -33,7 +33,8 @@ class Home extends Component {
         status: "Ontime",
         color: "#27A644",
       });
-    } else if (time > 10 || time <= 17) {
+    }
+    if (time > 10 && time <= 12) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
@@ -118,10 +119,10 @@ class Home extends Component {
             </table>
           </div>
         </div>
-        <div className='row'>
-          <div className='col lg-6'>
+        <div className='container row'>
+          <div className='col lg-3'>
             <div className={this.state.invisible}>
-              <div className='card mt-5 border-0'>
+              <div className='card mt-5 border-0' id='attedanceCard'>
                 <div className='card-body'>
                   <form onSubmit={this.onSubmit}>
                     <div className='form-group'>
@@ -135,15 +136,17 @@ class Home extends Component {
                         // wee need to use visiblity class to show and hide textarea
                         //className='invisible'
                         hidden={
-                          (time > 10 || time <= 17) ? "" : "hidden"
+                          time > 10 && time <= 12 ? "" : "hidden"
                         }></textarea>
                     </div>
                     <button
                       type='submit'
                       className='btn btn-success'
                       disabled={
-                        this.state.clicks === true || time > 17 ? "disabled" : ""
-                      }  >
+                        this.state.clicks === true || time > 12
+                          ? "disabled"
+                          : ""
+                      }>
                       Mark attendance
                     </button>
                   </form>

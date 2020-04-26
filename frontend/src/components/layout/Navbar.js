@@ -29,6 +29,11 @@ class Navbar extends Component {
             </Link>
           </li>
           <li className='nav-item'>
+            <Link className='nav-link' to='/requests'>
+              Requests
+            </Link>
+          </li>
+          <li className='nav-item'>
             <div className='btn-group' role='group'>
               <button
                 id='btnGroupDrop1'
@@ -54,6 +59,9 @@ class Navbar extends Component {
                   id='logout'>
                   <i className='fas fa-sign-out-alt'></i>Logout
                 </a>
+                <a href='/' className='nav-link btnGroupDrop1' id='logout'>
+                  <i class='fas fa-user-alt'></i>Edit Profile
+                </a>
               </div>
             </div>
           </li>
@@ -76,6 +84,11 @@ class Navbar extends Component {
           <li className='nav-item'>
             <Link className='nav-link' to='/leaderboards'>
               Leaderboards
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/leaverequest'>
+              Leave Request
             </Link>
           </li>
 
@@ -104,6 +117,9 @@ class Navbar extends Component {
                   className='nav-link '
                   id='logout'>
                   <i className='fas fa-sign-out-alt'></i>Logout
+                </a>
+                <a href='/' className='nav-link btnGroupDrop1' id='logout'>
+                  <i class='fas fa-user-alt'></i>Edit Profile
                 </a>
               </div>
             </div>

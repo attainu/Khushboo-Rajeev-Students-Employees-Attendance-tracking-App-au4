@@ -14,6 +14,11 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    let todaysDate = Date.now();
+
+    let today = moment(todaysDate).format("DD-MM-YYYY")
+    console.log("today", today);
+
     let month = new Date().getMonth() + 1;
     if (month <= 10) {
       month = '0' + month
@@ -25,6 +30,7 @@ router.post(
       date: req.body.date,
       month,
       year,
+      today,
       status: req.body.status,
       reason: req.body.reason,
     });

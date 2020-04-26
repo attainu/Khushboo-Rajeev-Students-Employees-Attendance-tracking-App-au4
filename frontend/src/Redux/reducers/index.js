@@ -4,10 +4,12 @@ import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import attendanceReducer from "./attendanceReducer";
 import allUsersReducer from "./allUsersReducer";
+import attendanceTimeReducer from "./attendanceTimeReducer";
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   attendance: attendanceReducer,
-  leaderboardsattendance: allUsersReducer
+  leaderboardsattendance: allUsersReducer,
+  homepageattendance: attendanceTimeReducer
 });

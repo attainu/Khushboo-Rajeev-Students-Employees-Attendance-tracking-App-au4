@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { postAttendance, getAttendance } from "../../actions/attendanceActions";
+import { postAttendance, getAttendance, getAttendanceTime } from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Home extends Component {
@@ -52,6 +52,26 @@ class Home extends Component {
         invisible: "invisible",
       });
     }
+
+    let date = Date.now();
+    let currentDate = moment(date).format("DD-MM-YYYY");
+    console.log("currentDate", currentDate);
+
+    const { userAttendanceResponse } = this.props.homepageattendance;
+    console.log("userAttendanceResponse", userAttendanceResponse);
+
+    var userAttendanceResponseMap = [];
+    userAttendanceResponse.forEach(function (userAttendanceResponse) {
+      var attendanceOfUser = userAttendanceResponse.attendance;
+      attendanceOfUser.forEach(function (x) {
+
+        let today = moment(x.date).format("DD-MM-YYYY")
+        console.log("today", today);
+        userAttendanceResponseMap.push(today)
+      })
+
+      console.log('userAttendanceResponseMap', userAttendanceResponseMap);
+    })
   }
 
   onChange(e) {
@@ -75,10 +95,37 @@ class Home extends Component {
       errors: {},
     };
     this.props.postAttendance(attendance);
+    this.props.getAttendanceTime();
   }
 
   render() {
+
     //const time = moment().format("h:mm:ss a");
+
+    /* let currentDate = new Date().toISOString();
+    console.log("currentDate", currentDate); */
+    let date = Date.now();
+    let currentDate = moment(date).format("DD-MM-YYYY");
+    console.log("currentDate", currentDate);
+
+    const { userAttendanceResponse } = this.props.homepageattendance;
+    console.log("userAttendanceResponse", userAttendanceResponse);
+
+    var userAttendanceResponseMap = [];
+    userAttendanceResponse.forEach(function (userAttendanceResponse) {
+      var attendanceOfUser = userAttendanceResponse.attendance;
+      attendanceOfUser.forEach(function (x) {
+
+        let today = moment(x.date).format("DD-MM-YYYY")
+        console.log("today", today);
+        userAttendanceResponseMap.push(today)
+      })
+
+      console.log('userAttendanceResponseMap', userAttendanceResponseMap);
+    })
+
+
+
     const time = new Date().getHours();
     console.log(time);
     const { user } = this.props.auth;
@@ -133,8 +180,6 @@ class Home extends Component {
                         rows='3'
                         value={this.state.reason}
                         onChange={this.onChange}
-                        // wee need to use visiblity class to show and hide textarea
-                        //className='invisible'
                         hidden={
                           time > 10 && time <= 12 ? "" : "hidden"
                         }></textarea>
@@ -142,11 +187,17 @@ class Home extends Component {
                     <button
                       type='submit'
                       className='btn btn-success'
-                      disabled={
+                      /* disabled={
                         this.state.clicks === true || time > 12
                           ? "disabled"
                           : ""
-                      }>
+                      } */
+
+                      disabled={
+                        (userAttendanceResponseMap.includes(currentDate))/*  || time > 12 */
+                          ? "disabled"
+                          : ""
+                      }  >
                       Mark attendance
                     </button>
                   </form>
@@ -169,13 +220,16 @@ class Home extends Component {
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
+  //getAttendanceTime: propTypes.func,
+  //homepageattendance: propTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   attendance: state.userAttendance,
+  homepageattendance: state.homepageattendance
 });
 
-export default connect(mapStateToProps, { postAttendance, getAttendance })(
+export default connect(mapStateToProps, { postAttendance, getAttendance, getAttendanceTime })(
   Home
 );

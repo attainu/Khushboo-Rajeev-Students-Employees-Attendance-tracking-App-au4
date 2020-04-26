@@ -119,7 +119,7 @@ class Navbar extends Component {
                   <i className='fas fa-sign-out-alt'></i>Logout
                 </a>
                 <a href='/' className='nav-link btnGroupDrop1' id='logout'>
-                  <i class='fas fa-user-alt'></i>Edit Profile
+                  <i className='fas fa-user-alt'></i>Edit Profile
                 </a>
               </div>
             </div>

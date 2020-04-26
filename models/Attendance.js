@@ -22,6 +22,9 @@ const AttendanceDataSchemaForUser = Schema({
   reason: {
     type: String,
   },
+  today: {
+    type: Date
+  }
 });
 //Attendance schema
 const AttendanceSchema = Schema({

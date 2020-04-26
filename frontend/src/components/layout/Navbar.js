@@ -17,7 +17,12 @@ class Navbar extends Component {
       /* show logout button only */
       var authLinks = (
         <ul className='navbar-nav ml-auto'>
-          <li className='nav-item'></li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/home'>
+              Home
+            </Link>
+          </li>
+
           <li className='nav-item'>
             <Link className='nav-link' to='/admin'>
               Admin

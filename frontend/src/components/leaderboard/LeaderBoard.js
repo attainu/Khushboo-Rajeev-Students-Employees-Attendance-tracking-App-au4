@@ -12,7 +12,7 @@ class LeaderBoard extends Component {
     console.log("allUsers", allUsers);
 
     return (
-      <div className='container mt-5'>
+      <div className='container mt-5 pb-5 mb-5'>
         <div className='row'>
           <div className='leaderboarddiv col-sm-5'>
             <h2 className='mt-5'> Leader-Boards</h2>

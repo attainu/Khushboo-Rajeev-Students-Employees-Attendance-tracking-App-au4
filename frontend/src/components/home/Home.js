@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { postAttendance, getAttendance, getAttendanceTime } from "../../actions/attendanceActions";
+import {
+  postAttendance,
+  getAttendance,
+  getAttendanceTime,
+} from "../../actions/attendanceActions";
 import moment from "moment";
 
 class Home extends Component {
@@ -28,13 +32,13 @@ class Home extends Component {
     //const time = moment().format("h:mm:ss a");
     const time = new Date().getHours();
 
-    if (time >= 9 && time <= 10) {
+    if (time > 9 && time < 10) {
       this.setState({
         status: "Ontime",
         color: "#27A644",
       });
     }
-    if (time > 10 && time <= 12) {
+    if (time > 10 && time < 12) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
@@ -64,14 +68,13 @@ class Home extends Component {
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-
-        let today = moment(x.date).format("DD-MM-YYYY")
+        let today = moment(x.date).format("DD-MM-YYYY");
         console.log("today", today);
-        userAttendanceResponseMap.push(today)
-      })
+        userAttendanceResponseMap.push(today);
+      });
 
-      console.log('userAttendanceResponseMap', userAttendanceResponseMap);
-    })
+      console.log("userAttendanceResponseMap", userAttendanceResponseMap);
+    });
   }
 
   onChange(e) {
@@ -99,7 +102,6 @@ class Home extends Component {
   }
 
   render() {
-
     //const time = moment().format("h:mm:ss a");
 
     /* let currentDate = new Date().toISOString();
@@ -115,16 +117,13 @@ class Home extends Component {
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-
-        let today = moment(x.date).format("DD-MM-YYYY")
+        let today = moment(x.date).format("DD-MM-YYYY");
         console.log("today", today);
-        userAttendanceResponseMap.push(today)
-      })
+        userAttendanceResponseMap.push(today);
+      });
 
-      console.log('userAttendanceResponseMap', userAttendanceResponseMap);
-    })
-
-
+      console.log("userAttendanceResponseMap", userAttendanceResponseMap);
+    });
 
     const time = new Date().getHours();
     console.log(time);
@@ -181,7 +180,7 @@ class Home extends Component {
                         value={this.state.reason}
                         onChange={this.onChange}
                         hidden={
-                          time > 10 && time <= 12 ? "" : "hidden"
+                          time > 10 && time < 12 ? "" : "hidden"
                         }></textarea>
                     </div>
                     <button
@@ -194,10 +193,12 @@ class Home extends Component {
                       } */
 
                       disabled={
-                        (userAttendanceResponseMap.includes(currentDate))/*  || time > 12 */
+                        userAttendanceResponseMap.includes(
+                          currentDate
+                        ) /*  || time > 12 */
                           ? "disabled"
                           : ""
-                      }  >
+                      }>
                       Mark attendance
                     </button>
                   </form>
@@ -227,9 +228,11 @@ Home.propTypes = {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   attendance: state.userAttendance,
-  homepageattendance: state.homepageattendance
+  homepageattendance: state.homepageattendance,
 });
 
-export default connect(mapStateToProps, { postAttendance, getAttendance, getAttendanceTime })(
-  Home
-);
+export default connect(mapStateToProps, {
+  postAttendance,
+  getAttendance,
+  getAttendanceTime,
+})(Home);

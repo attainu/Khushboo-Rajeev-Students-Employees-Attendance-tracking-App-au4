@@ -101,9 +101,7 @@ class Register extends Component {
 
   render() {
     //destructuring errors
-
     const { errors } = this.state;
-
     return (
       <div className='register'>
         <div className='container mb-5'>
@@ -158,10 +156,6 @@ class Register extends Component {
                   {errors.email && (
                     <div className='invalid-feedback'>{errors.email}</div>
                   )}
-                  {/* <small className='form-text text-muted'>
-                    This site uses Gravatar so if you want a profile image, use
-                    a Gravatar email
-                  </small> */}
                 </div>
                 {/******************** DEPARTMENT INPUT FILED ********************/}
                 <div className='form-group'>
@@ -245,11 +239,7 @@ class Register extends Component {
                   )}
                 </div>
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
-                <button
-                  className='btn btn-danger mb-5'
-                  type='submit' /*
-                  disabled={this.state.buttonstatus} */
-                >
+                <button className='btn btn-danger mb-5' type='submit'>
                   Sign Up
                 </button>
               </form>

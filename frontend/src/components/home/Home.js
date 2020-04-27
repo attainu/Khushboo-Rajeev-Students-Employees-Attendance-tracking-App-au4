@@ -29,7 +29,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    //const time = moment().format("h:mm:ss a");
     const time = new Date().getHours();
 
     if (time > 9 && time < 10) {
@@ -102,10 +101,6 @@ class Home extends Component {
   }
 
   render() {
-    //const time = moment().format("h:mm:ss a");
-
-    /* let currentDate = new Date().toISOString();
-    console.log("currentDate", currentDate); */
     let date = Date.now();
     let currentDate = moment(date).format("DD-MM-YYYY");
     console.log("currentDate", currentDate);
@@ -186,12 +181,6 @@ class Home extends Component {
                     <button
                       type='submit'
                       className='btn btn-success'
-                      /* disabled={
-                        this.state.clicks === true || time > 12
-                          ? "disabled"
-                          : ""
-                      } */
-
                       disabled={
                         userAttendanceResponseMap.includes(
                           currentDate
@@ -221,8 +210,6 @@ class Home extends Component {
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
-  //getAttendanceTime: propTypes.func,
-  //homepageattendance: propTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({

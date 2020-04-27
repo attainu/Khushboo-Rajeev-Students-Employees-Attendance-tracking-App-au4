@@ -33,6 +33,7 @@ class Admin extends Component {
               </thead>
               {allUsers &&
                 allUsers.map((item, index) => {
+
                   return (
                     <tbody key={index}>
                       <tr>
@@ -49,6 +50,7 @@ class Admin extends Component {
                         <td>{item.prcount.ontimeTotal}</td>
                         <td>{item.prcount.absentTotal}</td>
                         <td>{item.prcount.lateTotal}</td>
+
                       </tr>
                     </tbody>
                   );

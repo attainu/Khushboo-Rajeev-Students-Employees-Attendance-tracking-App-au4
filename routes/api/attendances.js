@@ -5,6 +5,7 @@ const passport = require("passport");
 const moment = require("moment");
 router.get("/test2", (req, res) => res.json({ msg: "Working" }));
 const User = require("../../models/User");
+
 const {
   Attendance,
   AttendanceDataSchemaForUser,
@@ -17,15 +18,15 @@ router.post(
     let todaysDate = Date.now();
 
     let today = moment(todaysDate).format("DD-MM-YYYY")
-    console.log("today", today);
+    //console.log("today", today);
 
     let month = new Date().getMonth() + 1;
     if (month <= 10) {
       month = '0' + month
     }
-    console.log("month", month);
+    //console.log("month", month);
     let year = new Date().getFullYear();
-    console.log("year", year);
+    //console.log("year", year);
     const allattendance = new AttendanceDataSchemaForUser({
       date: req.body.date,
       month,
@@ -174,18 +175,18 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Attendance.find({}).then((attendancedata) => {
-      console.log("attendancedata", attendancedata);
+      //console.log("attendancedata", attendancedata);
       var attendanceMap = [];
       attendancedata.forEach(function (user) {
         var b = user.attendance;
-        console.log("b", b);
+        // console.log("b", b);
         var dateMap = [];
         b.forEach(function (u) {
           /* var umonth = u.month;
           var uyear = u.year;
           console.log("umonth, uyear", umonth, uyear); */
           dateMap.push({ month: u.month, year: u.year });
-          console.log("dateMap", dateMap);
+          //console.log("dateMap", dateMap);
         })
         var count = getTotalStatusWiseCount(b);
         attendanceMap.push({
@@ -195,7 +196,7 @@ router.get(
           prcount: count,
           dateMap
         });
-        console.log("atndc", attendanceMap);
+        // console.log("atndc", attendanceMap);
       });
       const sortedresponce = sortDescending(attendanceMap);
       res.send(sortedresponce);

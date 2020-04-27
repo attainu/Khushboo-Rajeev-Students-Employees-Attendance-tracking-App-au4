@@ -53,7 +53,7 @@ class Login extends Component {
 
     return (
       <div className='login'>
-        <div className='container'>
+        <div className='container mb-5'>
           <div className='row'>
             <div className='col-md-5 m-auto'>
               <h2 className='display-4 text-center'>Log In</h2>
@@ -90,7 +90,7 @@ class Login extends Component {
                     <div className='invalid-feedback'>{errors.password}</div>
                   )}
                 </div>
-                <button className='btn btn-danger' type='submit'>
+                <button className='btn btn-danger mb-5' type='submit'>
                   Log In
                 </button>
               </form>

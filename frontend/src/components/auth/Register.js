@@ -239,7 +239,13 @@ class Register extends Component {
                   )}
                 </div>
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
-                <button className='btn btn-danger mb-5' type='submit'>
+
+                <button
+                  className='btn btn-danger mb-5'
+                  type='submit'
+
+                >
+
                   Sign Up
                 </button>
               </form>

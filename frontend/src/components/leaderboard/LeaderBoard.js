@@ -10,6 +10,9 @@ class LeaderBoard extends Component {
   render() {
     const { allUsers } = this.props.leaderboardsattendance;
 
+    //console.log("allUsers", allUsers);
+
+
     return (
       <div className='container mt-5 pb-5 mb-5'>
         <div className='row'>
@@ -28,6 +31,9 @@ class LeaderBoard extends Component {
               </thead>
               {allUsers &&
                 allUsers.map((item, index) => {
+
+                  // console.log("asdfg", allUsers);
+
                   return (
                     <tbody key={index}>
                       <tr>

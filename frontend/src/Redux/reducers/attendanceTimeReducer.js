@@ -5,7 +5,6 @@ const initialState = {
     isAuthenticated: false,
     userAttendanceResponse: [],
 };
-//console.log("userAttendanceResponse", userAttendanceResponse)
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_ATTENDANCE_RESPONSE:

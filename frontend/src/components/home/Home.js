@@ -29,9 +29,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
+
+
     const time = new Date().getHours();
 
-    if (time > 9 && time < 10) {
+    if (time >= 9 && time < 10) {
+
+    
       this.setState({
         status: "Ontime",
         color: "#27A644",
@@ -58,22 +62,25 @@ class Home extends Component {
 
     let date = Date.now();
     let currentDate = moment(date).format("DD-MM-YYYY");
-    console.log("currentDate", currentDate);
+    //console.log("currentDate", currentDate);
 
     const { userAttendanceResponse } = this.props.homepageattendance;
-    console.log("userAttendanceResponse", userAttendanceResponse);
+    //console.log("userAttendanceResponse", userAttendanceResponse);
 
     var userAttendanceResponseMap = [];
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-        let today = moment(x.date).format("DD-MM-YYYY");
-        console.log("today", today);
-        userAttendanceResponseMap.push(today);
-      });
 
-      console.log("userAttendanceResponseMap", userAttendanceResponseMap);
-    });
+
+        let today = moment(x.date).format("DD-MM-YYYY")
+        //console.log("today", today);
+        userAttendanceResponseMap.push(today)
+      })
+
+      //console.log('userAttendanceResponseMap', userAttendanceResponseMap);
+    })
+
   }
 
   onChange(e) {
@@ -101,27 +108,35 @@ class Home extends Component {
   }
 
   render() {
+
     let date = Date.now();
     let currentDate = moment(date).format("DD-MM-YYYY");
-    console.log("currentDate", currentDate);
+    //console.log("currentDate", currentDate);
 
     const { userAttendanceResponse } = this.props.homepageattendance;
-    console.log("userAttendanceResponse", userAttendanceResponse);
+    //console.log("userAttendanceResponse", userAttendanceResponse);
 
     var userAttendanceResponseMap = [];
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-        let today = moment(x.date).format("DD-MM-YYYY");
-        console.log("today", today);
-        userAttendanceResponseMap.push(today);
-      });
+
+
+        let today = moment(x.date).format("DD-MM-YYYY")
+        //console.log("today", today);
+        userAttendanceResponseMap.push(today)
+      })
+
+      //console.log('userAttendanceResponseMap', userAttendanceResponseMap);
+    })
+
+
 
       console.log("userAttendanceResponseMap", userAttendanceResponseMap);
     });
 
     const time = new Date().getHours();
-    console.log(time);
+    //console.log(time);
     const { user } = this.props.auth;
     return (
       <div className='container'>
@@ -181,10 +196,11 @@ class Home extends Component {
                     <button
                       type='submit'
                       className='btn btn-success'
+
+
                       disabled={
-                        userAttendanceResponseMap.includes(
-                          currentDate
-                        ) /*  || time > 12 */
+                        (userAttendanceResponseMap.includes(currentDate)) || time > 12
+
                           ? "disabled"
                           : ""
                       }>

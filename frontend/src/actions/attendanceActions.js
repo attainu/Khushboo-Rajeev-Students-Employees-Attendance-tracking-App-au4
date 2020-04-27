@@ -7,7 +7,7 @@ export const postAttendance = (attendanceData) => (dispatch) => {
   axios
     .post("/api/attendance/", attendanceData)
     .then((res) => {
-      //console.log("You have marked your attendance succesfully", res.data);
+
     })
     .catch((err) =>
       dispatch({
@@ -22,7 +22,7 @@ export const getAttendanceTime = () => (dispatch) => {
   axios
     .get("/api/attendance/")
     .then((res) => {
-      //console.log("response for attendance time in ACTION", res.data);
+
       dispatch({
         type: GET_ATTENDANCE_RESPONSE,
         payload: res.data
@@ -41,7 +41,7 @@ export const getAttendance = () => (dispatch) => {
   axios
     .get("/api/attendance/report")
     .then((res) => {
-      //console.log("Your attendance data", res.data);
+
       dispatch({
         type: GET_ATTENDANCE,
         payload: res.data
@@ -62,7 +62,7 @@ export const getAllUsersAttendance = () => (dispatch) => {
   axios
     .get("/api/attendance/leaderboards")
     .then((res) => {
-      //console.log("All user's data", res.data);
+
       dispatch({
         type: GET_USERS,
         payload: res.data

@@ -101,9 +101,7 @@ class Register extends Component {
 
   render() {
     //destructuring errors
-
     const { errors } = this.state;
-
     return (
       <div className='register'>
         <div className='container mb-5'>
@@ -241,11 +239,13 @@ class Register extends Component {
                   )}
                 </div>
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
+
                 <button
                   className='btn btn-danger mb-5'
                   type='submit'
 
                 >
+
                   Sign Up
                 </button>
               </form>

@@ -1,5 +1,5 @@
-module.exports = {
-  mongoURI:
-    "mongodb+srv://eviilraj:projectcrypto@cluster0-xrtws.mongodb.net/easyattend?retryWrites=true&w=majority",
-  secretOrKey: "secret",
-};
+if (process.env.NODE_ENV === "production") {
+  module.exports = require("./keys_prod");
+} else {
+  module.exports = require("./keys_dev");
+}

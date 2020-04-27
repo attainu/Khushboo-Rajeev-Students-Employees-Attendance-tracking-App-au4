@@ -158,10 +158,6 @@ class Register extends Component {
                   {errors.email && (
                     <div className='invalid-feedback'>{errors.email}</div>
                   )}
-                  {/* <small className='form-text text-muted'>
-                    This site uses Gravatar so if you want a profile image, use
-                    a Gravatar email
-                  </small> */}
                 </div>
                 {/******************** DEPARTMENT INPUT FILED ********************/}
                 <div className='form-group'>
@@ -247,8 +243,8 @@ class Register extends Component {
                 {/******************** SUBMIT BUTTON INPUT FILED ********************/}
                 <button
                   className='btn btn-danger mb-5'
-                  type='submit' /*
-                  disabled={this.state.buttonstatus} */
+                  type='submit'
+
                 >
                   Sign Up
                 </button>

@@ -12,9 +12,8 @@ const store = createStore(
   initialState,
   compose(
     //using compose just so we can use redux dev tool extension in chrome and apply middleware together
-    applyMiddleware(...middleware),
-    //implementing redux dev tools
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware)
+
   )
 );
 

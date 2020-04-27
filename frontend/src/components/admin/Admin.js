@@ -29,12 +29,11 @@ class Admin extends Component {
                   <th scope='col'>Ontime</th>
                   <th scope='col'>Absent</th>
                   <th scope='col'>Late</th>
-                  {/* <th scope='col'>Reason</th> */}
                 </tr>
               </thead>
               {allUsers &&
                 allUsers.map((item, index) => {
-                  // console.log("asdfg", allUsers);
+
                   return (
                     <tbody key={index}>
                       <tr>
@@ -51,7 +50,7 @@ class Admin extends Component {
                         <td>{item.prcount.ontimeTotal}</td>
                         <td>{item.prcount.absentTotal}</td>
                         <td>{item.prcount.lateTotal}</td>
-                        {/* <td className='reasontd'>{item.reason}</td> */}
+
                       </tr>
                     </tbody>
                   );

@@ -50,7 +50,7 @@ class Report extends Component {
           <div className='col-sm-6 col-md-6 col-lg-6'>
             <div className='chart'>
               <h2>Chart</h2>
-              {/*  {console.log("pie chart state", this.state)} */}
+
               <ReactMinimalPieChart
                 cx={60}
                 cy={40}
@@ -96,7 +96,6 @@ class Report extends Component {
 Report.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
-  //getAttendance: PropTypes.func.isRequired,
   attendance: PropTypes.object.isRequired,
 };
 

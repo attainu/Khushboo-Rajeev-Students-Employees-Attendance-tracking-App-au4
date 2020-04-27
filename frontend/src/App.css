@@ -1,0 +1,190 @@
+#landingImage {
+  background-image: url("https://img.freepik.com/free-vector/creative-office-co-working-center-university-campus-modern-workplace_48369-11863.jpg?size=626&ext=jpg");
+  height: 40vh;
+  opacity: 70%;
+}
+
+.landing {
+  background-color: #f5f5f5;
+}
+
+.landing-inner {
+  padding-top: 20px;
+}
+#fullcard {
+  margin-left: 18%;
+}
+
+#aboutUs {
+  padding: 0;
+  margin: 0;
+  height: 80%;
+  width: 18rem;
+  text-align: center;
+}
+
+#contactUs {
+  height: 80%;
+  padding: 0;
+  margin: 0;
+  width: 18rem;
+  text-align: center;
+}
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+nav {
+  background-color: #364f6b;
+}
+
+.navbar-brand,
+.nav-link,
+.nav-item {
+  color: #f5f5f5;
+}
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #f5f5f5;
+}
+
+/* logout button */
+#btnGroupDrop1 {
+  background-color: #364f6b;
+  color: white;
+  font-weight: bold;
+}
+#logout {
+  color: #364f6b;
+}
+#logout:hover {
+  color: #364f6b;
+}
+.dropdown-menu {
+  min-width: 5rem;
+  border-radius: 8px;
+}
+.homeLink .reportLink .leaderboardLink {
+  text-align: left;
+}
+
+.btn {
+  float: right;
+}
+
+footer {
+  background-color: #364f6b;
+  color: #f5f5f5;
+  position: fixed;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+}
+/************************************ Home CSS *****************************************/
+
+body {
+  background-image: linear-gradient(90deg, #dbe2ef 100%, #dbe2ef 100%);
+}
+
+.markbtn {
+  position: absolute;
+  margin-top: 11%;
+  right: 27%;
+}
+
+p {
+  text-align: center;
+}
+.successmessage {
+  position: absolute;
+  margin-top: 13%;
+  right: 27%;
+}
+
+.card {
+  margin-left: 52%;
+  width: 15rem;
+  height: 15rem;
+  background-image: linear-gradient(90deg, #dbe2ef 100%, #dbe2ef 100%);
+}
+
+/***************************************** Report Page ****************************************/
+.reporttablediv {
+  height: 400px;
+  overflow: scroll;
+}
+.reporttable {
+  float: left;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.reporttablediv::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.reporttablediv {
+  -ms-overflow-style: none;
+}
+
+.reasontd {
+  word-wrap: break-word;
+  min-width: 160px;
+  max-width: 160px;
+}
+/****************************************** LeaderBoard Page ***********************************/
+.leaderboardtable {
+  float: right;
+}
+.leaderboarddiv {
+  height: 400px;
+  float: left;
+  overflow: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.leaderboarddiv::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.leaderboarddiv {
+  -ms-overflow-style: none;
+}
+
+/******************************************** Admin Page **************************************/
+.admintable {
+  float: right;
+}
+.admindiv {
+  height: 400px;
+  overflow: scroll;
+  float: left;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.admindiv::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.admindiv {
+  -ms-overflow-style: none;
+}
+/******************************************** Leave Page **************************************/
+#leavediv {
+  border-radius: 10px;
+}
+
+/* requests CSS */
+.reasontd {
+  word-wrap: break-word;
+  min-width: 160px;
+  max-width: 160px;
+}
+.actionbtn {
+  float: left;
+}

@@ -35,7 +35,7 @@ class Home extends Component {
 
     if (time >= 9 && time < 10) {
 
-    
+
       this.setState({
         status: "Ontime",
         color: "#27A644",
@@ -129,11 +129,6 @@ class Home extends Component {
 
       //console.log('userAttendanceResponseMap', userAttendanceResponseMap);
     })
-
-
-
-      console.log("userAttendanceResponseMap", userAttendanceResponseMap);
-    });
 
     const time = new Date().getHours();
     //console.log(time);

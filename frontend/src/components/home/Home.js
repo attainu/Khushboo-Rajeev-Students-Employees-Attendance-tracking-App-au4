@@ -6,6 +6,7 @@ import {
   getAttendance,
   getAttendanceTime,
 } from "../../actions/attendanceActions";
+import { getCurrentUser } from "../../actions/authActions";
 import moment from "moment";
 
 class Home extends Component {
@@ -108,6 +109,9 @@ class Home extends Component {
   }
 
   render() {
+
+    let kitkat = this.props.currentuser;
+    console.log("kitkat", kitkat);
 
     let date = Date.now();
     let currentDate = moment(date).format("DD-MM-YYYY");
@@ -221,16 +225,20 @@ class Home extends Component {
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
+  getCurrentUser: PropTypes.func.isRequired,
+  currentuser: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   attendance: state.userAttendance,
   homepageattendance: state.homepageattendance,
+  currentuser: state.currentuser
 });
 
 export default connect(mapStateToProps, {
   postAttendance,
   getAttendance,
   getAttendanceTime,
+  getCurrentUser
 })(Home);

@@ -24,16 +24,16 @@ class Register extends Component {
         "admin@gmail.com",
         "rajeev@gmail.com",
         "khushboo@gmail.com",
-        "ctopp0@gmail.com",
-        "noteague1@gmail.com",
-        "ltonepohl2@gmail.com",
-        "lfesby3@gmail.com",
-        "eworsalls4@gmail.com",
-        "cdentith5@gmail.com",
-        "sboak6@gmail.com",
-        "bcoxen7@gmail.com",
-        "landree8@gmail.com",
-        "rgrzeszczyk9@gmail.com",
+        "ram@gmail.com",
+        "arya@gmail.com",
+        "sansa@gmail.com",
+        "peter@gmail.com",
+        "jon04@gmail.com",
+        "sergio5@gmail.com",
+        "rachel6@gmail.com",
+        "jondoe7@gmail.com",
+        "lisbon8@gmail.com",
+        "crazycoder9@gmail.com",
       ],
     };
 
@@ -58,27 +58,6 @@ class Register extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
-  handleOnClickInDept = () => {
-    for (let i = 0; i <= this.state.emaildb.length; i++)
-      if (this.state.email === this.state.emaildb[i]) {
-        console.log(
-          "setting button status to false current status:",
-          this.state.buttonstatus
-        );
-        this.setState({
-          buttonstatus: false,
-        });
-      } else {
-        console.log(
-          "not matched setting button status to true again current status:",
-          this.state.buttonstatus
-        );
-        this.setState({
-          buttonstatus: true,
-        });
-      }
-  };
 
   onSubmit(e) {
     //to overide the default form behaviour
@@ -168,7 +147,6 @@ class Register extends Component {
                     name='department'
                     value={this.state.department}
                     onChange={this.onChange}
-                    onClick={this.handleOnClickInDept}
                   />
                   {errors.department && (
                     <div className='invalid-feedback'>{errors.department}</div>
@@ -243,9 +221,12 @@ class Register extends Component {
                 <button
                   className='btn btn-danger mb-5'
                   type='submit'
-
+                  disabled={
+                    (this.state.emaildb.includes(this.state.email))
+                      ? ""
+                      : "disabled"
+                  }
                 >
-
                   Sign Up
                 </button>
               </form>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, GET_CURRENT_USER } from "./types";
 
 // REGISTER USER
 export const registerUser = (userData, history) => (dispatch) => {
@@ -21,6 +21,7 @@ export const loginUser = (userData) => (dispatch) => {
   axios
     .post("/api/users/login", userData)
     .then((res) => {
+      console.log("qwertyuiop", res.data);
       // Save to localStorage
       const { token } = res.data;
       // Set token to ls
@@ -47,6 +48,24 @@ export const setCurrentUser = (decoded) => {
     type: SET_CURRENT_USER,
     payload: decoded,
   };
+};
+
+export const getCurrentUser = () => (dispatch) => {
+  axios
+    .get("/api/users/home")
+    .then((res) => {
+      console.log("xxxxxx", res.data);
+      dispatch({
+        type: GET_CURRENT_USER,
+        payload: res.data
+      })
+    })
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
 };
 
 // LOG USER OUT

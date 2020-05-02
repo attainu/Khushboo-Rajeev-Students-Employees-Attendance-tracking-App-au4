@@ -13,6 +13,10 @@ const validateRegisterInput = require("../../validation/register");
 //Load User models
 const User = require("../../models/User");
 
+const {
+  Attendance,
+  AttendanceDataSchemaForUser,
+} = require("../../models/Attendance");
 //@ROUTE GET api/users/register
 //@desc Registering new user
 
@@ -134,6 +138,7 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     //send all the user data except for password on succesful login
+
     res.json({
       id: req.user.id,
       name: req.user.name,
@@ -146,6 +151,35 @@ router.get(
       date: req.user.date,
     });
     // res.json({ msg: "success" });
+  }
+);
+
+router.get(
+  "/home",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    let datas = {
+      id: req.user.id,
+      name: req.user.name,
+      username: req.user.username,
+      email: req.user.email,
+      avatar: req.user.avatar,
+      mobile: req.user.mobile,
+      department: req.user.department,
+      joined: req.user.joined,
+      date: req.user.date,
+    };
+    User.findOne({ user: req.user.username }).then((user) => {
+      const usernameToLookFor = req.user.username;
+      Attendance.find({ username: usernameToLookFor }).then((Attendance) => {
+
+        const alldatas = {
+          attendances: Attendance,
+          userData: datas
+        }
+        res.send(alldatas);
+      });
+    });
   }
 );
 

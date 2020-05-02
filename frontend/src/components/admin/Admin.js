@@ -15,8 +15,8 @@ class Admin extends Component {
       <div className='container mt-5'>
         <div className='row'>
           <div className='admindiv mt-4 col-sm-4'>
-            <h3> Pick a Month</h3>
-            <input type='month' name='birthday' placeholder='mm-yyyy' />
+            {/* <h3> Pick a Month</h3>
+            <input type='month' name='birthday' placeholder='mm-yyyy' /> */}
           </div>
 
           <div className='col-sm-8 mb-5 pb-5'>

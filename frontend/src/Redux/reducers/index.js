@@ -5,11 +5,13 @@ import errorReducer from "./errorReducer";
 import attendanceReducer from "./attendanceReducer";
 import allUsersReducer from "./allUsersReducer";
 import attendanceTimeReducer from "./attendanceTimeReducer";
+import currentUserReducer from "./currentUserReducer";
 
 export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   attendance: attendanceReducer,
   leaderboardsattendance: allUsersReducer,
-  homepageattendance: attendanceTimeReducer
+  homepageattendance: attendanceTimeReducer,
+  currentuser: currentUserReducer
 });

@@ -32,22 +32,24 @@ class Home extends Component {
   componentDidMount() {
     const time = new Date().getHours();
 
-    if (time >= 9 && time < 10) {
+    if (time > 7 && time < 10) {
       this.setState({
         status: "Ontime",
         color: "#27A644",
       });
-    }
-    if (time > 10 && time < 12) {
+    } else if (time > 10 && time < 12) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
       });
     } else {
-      this.setState({
+      /*  this.setState({
         status: "Absent",
         color: "#FE0739",
-      });
+      }); */
+      /* console.log(
+        "hi"
+      ); */
     }
     const { user } = this.props.auth;
 
@@ -187,8 +189,7 @@ class Home extends Component {
                       className='btn btn-success'
                       disabled={
                         userAttendanceResponseMap.includes(currentDate) ||
-                        time > 12 ||
-                        time < 9
+                        time > 12
                           ? "disabled"
                           : ""
                       }>

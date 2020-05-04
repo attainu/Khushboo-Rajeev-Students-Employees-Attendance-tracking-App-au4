@@ -30,13 +30,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-
-
     const time = new Date().getHours();
 
     if (time >= 9 && time < 10) {
-
-
       this.setState({
         status: "Ontime",
         color: "#27A644",
@@ -72,16 +68,13 @@ class Home extends Component {
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-
-
-        let today = moment(x.date).format("DD-MM-YYYY")
+        let today = moment(x.date).format("DD-MM-YYYY");
         //console.log("today", today);
-        userAttendanceResponseMap.push(today)
-      })
+        userAttendanceResponseMap.push(today);
+      });
 
       //console.log('userAttendanceResponseMap', userAttendanceResponseMap);
-    })
-
+    });
   }
 
   onChange(e) {
@@ -109,9 +102,8 @@ class Home extends Component {
   }
 
   render() {
-
     let kitkat = this.props.currentuser;
-    console.log("kitkat", kitkat);
+    // console.log("kitkat", kitkat);
 
     let date = Date.now();
     let currentDate = moment(date).format("DD-MM-YYYY");
@@ -124,15 +116,13 @@ class Home extends Component {
     userAttendanceResponse.forEach(function (userAttendanceResponse) {
       var attendanceOfUser = userAttendanceResponse.attendance;
       attendanceOfUser.forEach(function (x) {
-
-
-        let today = moment(x.date).format("DD-MM-YYYY")
+        let today = moment(x.date).format("DD-MM-YYYY");
         //console.log("today", today);
-        userAttendanceResponseMap.push(today)
-      })
+        userAttendanceResponseMap.push(today);
+      });
 
       //console.log('userAttendanceResponseMap', userAttendanceResponseMap);
-    })
+    });
 
     const time = new Date().getHours();
     //console.log(time);
@@ -195,11 +185,10 @@ class Home extends Component {
                     <button
                       type='submit'
                       className='btn btn-success'
-
-
                       disabled={
-                        (userAttendanceResponseMap.includes(currentDate)) || time > 12
-
+                        userAttendanceResponseMap.includes(currentDate) ||
+                        time > 12 ||
+                        time < 9
                           ? "disabled"
                           : ""
                       }>
@@ -226,19 +215,19 @@ Home.propTypes = {
   auth: PropTypes.object.isRequired,
   postAttendance: PropTypes.func.isRequired,
   getCurrentUser: PropTypes.func.isRequired,
-  currentuser: PropTypes.object.isRequired
+  currentuser: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   attendance: state.userAttendance,
   homepageattendance: state.homepageattendance,
-  currentuser: state.currentuser
+  currentuser: state.currentuser,
 });
 
 export default connect(mapStateToProps, {
   postAttendance,
   getAttendance,
   getAttendanceTime,
-  getCurrentUser
+  getCurrentUser,
 })(Home);

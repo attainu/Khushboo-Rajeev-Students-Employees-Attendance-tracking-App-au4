@@ -32,24 +32,21 @@ class Home extends Component {
   componentDidMount() {
     const time = new Date().getHours();
 
-    if (time > 7 && time < 10) {
+    if (time > 9 && time < 10) {
       this.setState({
         status: "Ontime",
         color: "#27A644",
       });
-    } else if (time > 10 && time < 12) {
+    } else if (time > 10 && time < 11) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
       });
     } else {
-      /*  this.setState({
-        status: "Absent",
+      this.setState({
+        status: "Late",
         color: "#FE0739",
-      }); */
-      /* console.log(
-        "hi"
-      ); */
+      });
     }
     const { user } = this.props.auth;
 

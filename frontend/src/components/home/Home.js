@@ -32,19 +32,19 @@ class Home extends Component {
   componentDidMount() {
     const time = new Date().getHours();
 
-    if (time > 9 && time < 10) {
+    if (time > 8 && time < 11) {
       this.setState({
         status: "Ontime",
         color: "#27A644",
       });
-    } else if (time > 10 && time < 11) {
+    } else if (time > 10 && time < 12) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
       });
     } else {
       this.setState({
-        status: "Late",
+        status: "Absent",
         color: "#FE0739",
       });
     }
@@ -178,7 +178,7 @@ class Home extends Component {
                         value={this.state.reason}
                         onChange={this.onChange}
                         hidden={
-                          time > 10 && time < 12 ? "" : "hidden"
+                          time >= 10 && time < 12 ? "" : "hidden"
                         }></textarea>
                     </div>
                     <button

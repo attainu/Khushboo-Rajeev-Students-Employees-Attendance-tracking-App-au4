@@ -33,7 +33,7 @@ class Home extends Component {
         status: "Ontime",
         color: "#27A644",
       });
-    } else if (time === 10 && time < 11) {
+    } else if (time === 10 && time < 12) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
@@ -158,7 +158,7 @@ class Home extends Component {
                         value={this.state.reason}
                         onChange={this.onChange}
                         hidden={
-                          time === 10 && time < 11 ? "" : "hidden"
+                          time === 10 && time < 12 ? "" : "hidden"
                         }></textarea>
                     </div>
                     <button
@@ -166,7 +166,7 @@ class Home extends Component {
                       className='btn btn-success'
                       disabled={
                         userAttendanceResponseMap.includes(currentDate) ||
-                          time > 11
+                          time > 12
                           ? "disabled"
                           : ""
                       }>

@@ -37,7 +37,7 @@ class Home extends Component {
         status: "Ontime",
         color: "#27A644",
       });
-    } else if (time > 10 && time < 12) {
+    } else if (time > 10 && time < 13) {
       this.setState({
         status: "Late",
         color: "#ffc93c",
